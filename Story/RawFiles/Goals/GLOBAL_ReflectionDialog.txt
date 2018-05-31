@@ -398,6 +398,35 @@ THEN
 ProcCheckLastReflectionPlayer(_Player,_ReflectionDialogName,_Index);
 SetTag(_Player,_PlayerIdentifier);
 Proc_PartyDecisionDialog_DoDialogWithObservers(_Player,_ReflectionDialogName,_InstanceID,0);
+ProcObjectTimer(_Player1,"ReflectionDialogFallbackTimer",2000);
+
+IF
+DialogStarted(_ReflectionDialogName,_Inst)
+AND
+DB_ReflectionWrapperStarted(_ReflectionDialogName,_Player1)
+THEN
+ProcObjectTimerCancel(_Player1,"ReflectionDialogFallbackTimer");
+
+//Fallback if a Partydialog refused to start up.
+PROC
+ProcObjectTimerFinished(_Player1,"ReflectionDialogFallbackTimer")
+AND
+DB_ReflectionWrapperStarted(_ReflectionDialogName,_Player1)
+AND
+DB_ReflectionDialog_Phase1_Index(_Index)
+AND
+IntegerSum(_Index,1,_NewIndex)
+AND
+DB_DialogPlayers(_Inst,_Player,1)
+AND
+DB_ReflectionDialog_PlayerIdentifier(_Index,_PlayerIdentifier)
+THEN
+ClearTag(_Player,_PlayerIdentifier);
+NOT DB_ReflectionDialog_Phase1_Index(_Index);
+DB_ReflectionDialog_Phase1_Index(_NewIndex);
+ObjectClearFlag(_Player,"GLO_IsLastPlayerInReflectionDialog",0);
+Proc_ReflectionDialog_Phase1_NextPlayer(_ReflectionDialogName,_NewIndex);
+
 
 //A dialog in phase 1 is done, try again with index + 1
 IF
