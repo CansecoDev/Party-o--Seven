@@ -1,0 +1,480 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+//Using DB_GLO_CheckSpeakerNumber((GUIDSTRING)_Speaker, (REAL)_Distance) - on dialogue start with 
+//_Speaker, checks how many fellow party members are in _Distance of them.
+//If _Distance is set to -1.0, then it checks how many party members exist at all.
+//Character flag below is set on character.
+
+DB_GLO_PartyAmountFlags("GLO_PartyOf4", 4);
+DB_GLO_PartyAmountFlags("GLO_PartyOf3", 3);
+DB_GLO_PartyAmountFlags("GLO_PartyOf2", 2);
+DB_GLO_PartyAmountFlags("GLO_PartyOf1", 1);
+
+DB_UserCounter(0);
+KBSECTION
+//REGION Two-Speaker Dialog
+PROC
+Proc_DialogFlagSetup(_,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker1, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker2)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker2, _Dist);
+
+PROC
+Proc_DialogFlagSetup(_,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker2, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker1)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker1, _Dist);
+//END_REGION
+
+//REGION Three-Speaker Dialog
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker1, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker2)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker2, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker1, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker3)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker3, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker2, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker1)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker1, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker2, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker3)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker3, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker3, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker1)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker1, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker3, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker2)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker2, _Dist);
+//END_REGION
+
+//REGION Four-Speaker Dialog
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker1, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker2)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker2, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker1, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker3)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker3, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker1, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker4)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker4, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker2, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker1)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker1, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker2, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker3)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker3, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker2, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker4)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker4, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker3, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker1)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker1, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker3, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker2)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker2, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker3, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker4)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker4, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker4, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker1)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker1, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker4, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker2)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker2, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker4, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker3)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker3, _Dist);
+//END_REGION
+
+//REGION Five-Speaker Dialog
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4, (GUIDSTRING)_Speaker5)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker1, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker2)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker2, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4, (GUIDSTRING)_Speaker5)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker1, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker3)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker3, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4, (GUIDSTRING)_Speaker5)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker1, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker4)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker4, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4, (GUIDSTRING)_Speaker5)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker1, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker5)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker5, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4, (GUIDSTRING)_Speaker5)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker2, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker1)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker1, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4, (GUIDSTRING)_Speaker5)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker2, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker3)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker3, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4, (GUIDSTRING)_Speaker5)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker2, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker4)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker4, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4, (GUIDSTRING)_Speaker5)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker2, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker5)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker5, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4, (GUIDSTRING)_Speaker5)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker3, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker1)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker1, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4, (GUIDSTRING)_Speaker5)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker3, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker2)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker2, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4, (GUIDSTRING)_Speaker5)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker3, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker4)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker4, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4, (GUIDSTRING)_Speaker5)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker3, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker5)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker5, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4, (GUIDSTRING)_Speaker5)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker4, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker1)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker1, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4, (GUIDSTRING)_Speaker5)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker4, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker2)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker2, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4, (GUIDSTRING)_Speaker5)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker4, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker3)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker3, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4, (GUIDSTRING)_Speaker5)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker4, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker5)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker5, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4, (GUIDSTRING)_Speaker5)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker5, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker1)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker1, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4, (GUIDSTRING)_Speaker5)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker5, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker2)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker2, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4, (GUIDSTRING)_Speaker5)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker5, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker3)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker3, _Dist);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Speaker1,(GUIDSTRING)_Speaker2,(GUIDSTRING)_Speaker3, (GUIDSTRING)_Speaker4, (GUIDSTRING)_Speaker5)
+AND
+DB_GLO_CheckSpeakerNumber(_Speaker5, (REAL)_Dist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Speaker4)
+THEN
+Proc_CountParty((GUIDSTRING)_Speaker4, _Dist);
+//END_REGION
+
+PROC
+Proc_CountParty((GUIDSTRING)_Player, _)
+THEN
+DB_Singleton("GLO_PartyCount",1);
+
+PROC
+Proc_CountParty((GUIDSTRING)_Player, _)
+AND
+DB_GLO_PartyAmountFlags(_Flag, _)
+THEN
+ObjectClearFlag(_Player, _Flag, 0);
+
+PROC
+Proc_CountParty((GUIDSTRING)_Player, (REAL)_MaxDist)
+AND
+DB_IsPlayer((CHARACTERGUID)_Player)
+AND
+DB_IsPlayer((CHARACTERGUID)_Player2)
+AND
+_Player != _Player2
+AND
+CharacterIsInPartyWith(_Player, _Player2, 1)
+AND
+GetDistanceTo(_Player, _Player2, _Dist)
+AND
+_Dist <= _MaxDist
+AND
+DB_Singleton("GLO_PartyCount",_Num)
+AND
+IntegerSum(_Num, 1, _NewNum)
+THEN
+DB_Singleton("GLO_PartyCount",_NewNum);
+
+PROC
+Proc_CountParty((GUIDSTRING)_Player, -1.0)
+AND
+DB_IsPlayer((CHARACTERGUID)_Player)
+AND
+DB_IsPlayer((CHARACTERGUID)_Player2)
+AND
+_Player != _Player2
+AND
+CharacterIsInPartyWith(_Player, _Player2, 1)
+AND
+DB_Singleton("GLO_PartyCount",_Num)
+AND
+IntegerSum(_Num, 1, _NewNum)
+THEN
+DB_Singleton("GLO_PartyCount",_NewNum);
+
+PROC
+Proc_CountParty((GUIDSTRING)_Player, _)
+AND
+DB_Singleton("GLO_PartyCount",_Num)
+AND
+DB_GLO_PartyAmountFlags(_Flag, _Num)
+THEN
+NOT DB_Singleton("GLO_PartyCount",_Num);
+ObjectSetFlag(_Player, _Flag, 0);
+
+//REGION Keeping track of whether there are multiple players
+IF
+UserConnected(_, _, _)
+AND
+DB_UserCounter(_Count)
+AND
+IntegerSum(_Count, 1, _NewCount)
+THEN
+NOT DB_UserCounter(_Count);
+DB_UserCounter(_NewCount);
+
+IF
+UserDisconnected(_, _, _)
+AND
+DB_UserCounter(_Count)
+AND
+IntegerSubtract(_Count, 1, _NewCount)
+THEN
+NOT DB_UserCounter(_Count);
+DB_UserCounter(_NewCount);
+
+IF
+DB_UserCounter(1)
+THEN
+GlobalClearFlag("GLO_MultiPlayer");
+
+IF
+DB_UserCounter(_Num)
+AND
+_Num != 1
+THEN
+GlobalSetFlag("GLO_MultiPlayer");
+//END_REGION
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "DOS2ModWrapper"

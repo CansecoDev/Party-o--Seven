@@ -1,0 +1,378 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+DB_PartyDecisionDialog_UltimatumEvent("Ultimatum1","Optional1Chosen");
+DB_PartyDecisionDialog_UltimatumEvent("Ultimatum2","Optional2Chosen");
+DB_PartyDecisionDialog_UltimatumEvent("Ultimatum3","Optional3Chosen");
+DB_PartyDecisionDialog_UltimatumEvent("Ultimatum4","Optional4Chosen");
+DB_PartyDecisionDialog_UltimatumEvent("Ultimatum5","Optional5Chosen");
+
+DB_PartyDecisionDialog_PlayerIdentifier(2,"PDD_Player2");
+DB_PartyDecisionDialog_PlayerIdentifier(3,"PDD_Player3");
+DB_PartyDecisionDialog_PlayerIdentifier(4,"PDD_Player4");
+
+DB_LoopEffectDisabledInCombat("RS3_FX_UI_Exclamation_Mark_01");
+KBSECTION
+//Phases of a Party Decision dialog:
+//1) Player 2-4 choose one of max five fixed option (A-E) or suggest a new extra conditional option (1-5). These conditional options can be ultimatums
+//2) Player 1 makes a final decision
+//3) OutcomeEvent gets set. If ultimatum that was ignored, combat starts.
+
+//Public functions:
+IF
+DualDialogRequested(_PartyDecisionDialog,_ParentInstance,_TargetInstance)
+AND
+DB_DialogPlayers(_ParentInstance,_Player,1)
+THEN
+DB_PartyDecisionDialog_DualDialogInstance(_PartyDecisionDialog,_ParentInstance,_TargetInstance);
+ProcStartPartyDecisionDialog((CHARACTERGUID)_Player,_PartyDecisionDialog);
+
+//Private functions:
+//REGION Init
+PROC
+ProcStartPartyDecisionDialog((CHARACTERGUID)_Player1,(STRING)_PartyDecisionDialogName)
+AND
+NOT DB_PartyDecisionDialog_Outcome(_PartyDecisionDialogName,_)
+THEN
+Proc_PartyDecisionDialog_CollectPlayers(_Player1,_PartyDecisionDialogName);
+Proc_PartyDecisionDialog_Phase1(_Player1,_PartyDecisionDialogName);
+
+//Collect all available (nearby) players and add them to an indexed list, with the dialog started in pos 1.
+PROC
+Proc_PartyDecisionDialog_CollectPlayers((CHARACTERGUID)_Player1,(STRING)_PartyDecisionDialogName)
+AND
+NOT DB_PartyDecisionDialog_PlayerCount(_PartyDecisionDialogName,_)
+THEN
+DB_PartyDecisionDialog_Players(_PartyDecisionDialogName,_Player1,1);
+DB_PartyDecisionDialog_PlayerCount(_PartyDecisionDialogName,1);
+
+//First add all companions
+PROC
+Proc_PartyDecisionDialog_CollectPlayers((CHARACTERGUID)_Player1,(STRING)_PartyDecisionDialogName)
+AND
+DB_IsPlayer(_Player)
+AND
+_Player != _Player1
+AND
+CharacterIsInPartyWith(_Player,_Player1,1)
+AND
+ObjectGetFlag(_Player,"GLO_Polymorphed",0)
+AND
+IsTagged(_Player,"HENCHMAN",0)
+AND
+IsTagged(_Player,"AVATAR",0)
+AND
+QRY_SpeakerIsAvailableAndInDialogRange(_Player,_Player1)
+AND
+DB_PartyDecisionDialog_PlayerCount(_PartyDecisionDialogName,_Count)
+AND
+IntegerSum(_Count,1,_NewCount)
+AND
+NOT DB_ExcludePlayerForPDD(_PartyDecisionDialogName,_Player)
+THEN
+DB_PartyDecisionDialog_Players(_PartyDecisionDialogName,_Player,_NewCount);
+NOT DB_PartyDecisionDialog_PlayerCount(_PartyDecisionDialogName,_Count);
+DB_PartyDecisionDialog_PlayerCount(_PartyDecisionDialogName,_NewCount);
+
+//Then Add all avatars
+PROC
+Proc_PartyDecisionDialog_CollectPlayers((CHARACTERGUID)_Player1,(STRING)_PartyDecisionDialogName)
+AND
+DB_IsPlayer(_Player)
+AND
+_Player != _Player1
+AND
+CharacterIsInPartyWith(_Player,_Player1,1)
+AND
+IsTagged(_Player,"AVATAR",1)
+AND
+QRY_SpeakerIsAvailableAndInDialogRange(_Player,_Player1)
+AND
+DB_PartyDecisionDialog_PlayerCount(_PartyDecisionDialogName,_Count)
+AND
+IntegerSum(_Count,1,_NewCount)
+AND
+NOT DB_ExcludePlayerForPDD(_PartyDecisionDialogName,_Player)
+THEN
+DB_PartyDecisionDialog_Players(_PartyDecisionDialogName,_Player,_NewCount);
+NOT DB_PartyDecisionDialog_PlayerCount(_PartyDecisionDialogName,_Count);
+DB_PartyDecisionDialog_PlayerCount(_PartyDecisionDialogName,_NewCount);
+
+PROC
+Proc_PartyDecisionDialog_CollectPlayers((CHARACTERGUID)_Player1,(STRING)_PartyDecisionDialogName)
+AND
+DB_PartyDecisionDialog_PlayerCount(_PartyDecisionDialogName,_Count)
+THEN
+NOT DB_PartyDecisionDialog_PlayerCount(_PartyDecisionDialogName,_Count);
+//END_REGION
+
+//REGION Data managment
+PROC
+Proc_RegisterPartyDecisionDialogOutcomes_Fixed((STRING)_DialogName,(STRING)_Fixed1,(STRING)_Fixed2,(STRING)_Fixed3,(STRING)_Fixed4,(STRING)_Fixed5)
+THEN
+DB_PartyDecisionDialog_OutcomeEvent(_DialogName,"FixedAChosen",_Fixed1);
+DB_PartyDecisionDialog_OutcomeEvent(_DialogName,"FixedBChosen",_Fixed2);
+DB_PartyDecisionDialog_OutcomeEvent(_DialogName,"FixedCChosen",_Fixed3);
+DB_PartyDecisionDialog_OutcomeEvent(_DialogName,"FixedDChosen",_Fixed4);
+DB_PartyDecisionDialog_OutcomeEvent(_DialogName,"FixedEChosen",_Fixed5);
+
+PROC
+Proc_RegisterPartyDecisionDialogOutcomes_Optional((STRING)_DialogName,(STRING)_Option1,(STRING)_Option2,(STRING)_Option3,(STRING)_Option4,(STRING)_Option5)
+THEN
+DB_PartyDecisionDialog_OutcomeEvent(_DialogName,"Optional1Chosen",_Option1);
+DB_PartyDecisionDialog_OutcomeEvent(_DialogName,"Optional2Chosen",_Option2);
+DB_PartyDecisionDialog_OutcomeEvent(_DialogName,"Optional3Chosen",_Option3);
+DB_PartyDecisionDialog_OutcomeEvent(_DialogName,"Optional4Chosen",_Option4);
+DB_PartyDecisionDialog_OutcomeEvent(_DialogName,"Optional5Chosen",_Option5);
+//END_REGION
+
+//REGION Phase 2
+PROC
+Proc_PartyDecisionDialog_Phase2((STRING)_PartyDecisionDialogName)
+AND
+DB_PartyDecisionDialog_State(_PartyDecisionDialogName,_Player1,"Phase1")
+AND
+DB_PartyDecisionDialog_DualDialogInstance(_PartyDecisionDialogName,_ParentInstance,_TargetInstance)
+THEN
+NOT DB_PartyDecisionDialog_State(_PartyDecisionDialogName,_Player1,"Phase1");
+DB_PartyDecisionDialog_State(_PartyDecisionDialogName,_Player1,"Phase2");
+SetTag(_Player1,"PDD_Player1");
+Proc_PartyDecisionDialog_DoDialogWithObservers(_Player1,_PartyDecisionDialogName,_ParentInstance,_TargetInstance);
+
+//Player 2-4 made his choice: ignore and reset
+IF
+ObjectFlagSet(_Event,_Player,_Inst)
+AND
+DB_PartyDecisionDialog_OutcomeEvent(_PartyDecisionDialogName,_Event,_Outcome)
+AND
+DB_PartyDecisionDialog_State(_PartyDecisionDialogName,_Player2,"Phase1")
+AND
+_Player != _Player2
+THEN
+ObjectClearDialogFlag(_Player,_Event,_Inst);
+
+//Player 1 made his choice: set the final event
+IF
+ObjectFlagSet(_Event,(CHARACTERGUID)_Player,_Inst)
+AND
+DB_PartyDecisionDialog_State(_PartyDecisionDialogName,_Player,"Phase2")
+AND
+DB_PartyDecisionDialog_OutcomeEvent(_PartyDecisionDialogName,_Event,_Outcome)
+THEN
+DB_PartyDecisionDialog_Outcome(_PartyDecisionDialogName,_Event);
+ObjectClearDialogFlag(_Player,_Event,_Inst);
+ClearTag(_Player,"PDD_Player1");
+ObjectSetDialogFlag(_Player,_Outcome,_Inst);
+
+IF
+DialogEnded(_PartyDecisionDialogName,_)
+AND
+DB_PartyDecisionDialog_State(_PartyDecisionDialogName,_Player1,"Phase2")
+THEN
+Proc_PartyDecisionDialog_Cleanup(_PartyDecisionDialogName);
+NOT DB_PartyDecisionDialog_State(_PartyDecisionDialogName,_Player1,"Phase2");
+//END_REGION
+
+//REGION Phase1
+//Start looping over all available players starting from the second. (First player goes last and decides. cfr, Phase 2)
+PROC
+Proc_PartyDecisionDialog_Phase1((CHARACTERGUID)_Player1,(STRING)_PartyDecisionDialogName)
+THEN
+DB_PartyDecisionDialog_State(_PartyDecisionDialogName,_Player1,"Phase1");
+DB_PartyDecisionDialog_Phase1_Index(2);
+Proc_PartyDecisionDialog_Phase1_NextPlayer(_PartyDecisionDialogName,2);
+
+//If a character exist at that index, start a dialog with that character as first speaker
+PROC
+Proc_PartyDecisionDialog_Phase1_NextPlayer((STRING)_PartyDecisionDialogName,(INTEGER)_Index)
+THEN
+NOT DB_RanPartyDecisionDialog_Players(_PartyDecisionDialogName);
+
+PROC
+Proc_PartyDecisionDialog_Phase1_NextPlayer((STRING)_PartyDecisionDialogName,(INTEGER)_Index)
+AND
+DB_PartyDecisionDialog_Players(_PartyDecisionDialogName,_Player,_Index)
+AND
+DB_PartyDecisionDialog_PlayerIdentifier(_Index,_PlayerIdentifier)
+AND
+DB_PartyDecisionDialog_DualDialogInstance(_PartyDecisionDialogName,_ParentInstance,_TargetInstance)
+AND
+DB_PartyDecisionDialog_Players(_PartyDecisionDialogName,_Initiator,1)
+THEN
+SetTag(_Player,_PlayerIdentifier);
+Proc_PartyDecisionDialog_DoDialogWithObservers(_Player,_PartyDecisionDialogName,_ParentInstance,0);
+DB_RanPartyDecisionDialog_Players(_PartyDecisionDialogName);
+
+//If a character does NOT exist at that index, all characters were exhausted, go to phase 2.
+PROC
+Proc_PartyDecisionDialog_Phase1_NextPlayer((STRING)_PartyDecisionDialogName,(INTEGER)_Index)
+AND
+NOT DB_RanPartyDecisionDialog_Players(_PartyDecisionDialogName)
+THEN
+NOT DB_PartyDecisionDialog_Phase1_Index(_Index);
+Proc_PartyDecisionDialog_Phase2(_PartyDecisionDialogName);
+
+PROC
+Proc_PartyDecisionDialog_Phase1_NextPlayer((STRING)_PartyDecisionDialogName,(INTEGER)_)
+THEN
+NOT DB_RanPartyDecisionDialog_Players(_PartyDecisionDialogName);
+
+//A dialog in phase 1 is done, try again with index + 1
+IF
+DialogEnded(_PartyDecisionDialogName,_Inst)
+AND
+DB_PartyDecisionDialog_State(_PartyDecisionDialogName,_Player1,"Phase1")
+AND
+DB_PartyDecisionDialog_Phase1_Index(_Index)
+AND
+IntegerSum(_Index,1,_NewIndex)
+AND
+DB_DialogPlayers(_Inst,_Player,1)
+AND
+DB_PartyDecisionDialog_PlayerIdentifier(_Index,_PlayerIdentifier)
+THEN
+ClearTag(_Player,_PlayerIdentifier);
+NOT DB_PartyDecisionDialog_Phase1_Index(_Index);
+DB_PartyDecisionDialog_Phase1_Index(_NewIndex);
+Proc_PartyDecisionDialog_Phase1_NextPlayer(_PartyDecisionDialogName,_NewIndex);
+
+//Record Ultimatum
+IF
+ObjectFlagSet(_Event,(CHARACTERGUID)_Player,_)
+AND
+DB_PartyDecisionDialog_UltimatumEvent(_Event,_Option)
+AND
+DB_PartyDecisionDialog_Players(_PartyDecisionDialogName,_Player,_Index)
+THEN
+DB_PartyDecisionDialog_UltimatumSet(_PartyDecisionDialogName,_Player,_Option);
+ObjectClearFlag(_Player,_Event,0);
+//END_REGION
+
+//REGION Clean up
+PROC
+Proc_PartyDecisionDialog_Cleanup((STRING)_PartyDecisionDialogName)
+AND
+DB_PartyDecisionDialog_OutcomeEvent(_PartyDecisionDialogName,_Outcome,_StoryEvent)
+THEN
+NOT DB_PartyDecisionDialog_OutcomeEvent(_PartyDecisionDialogName,_Outcome,_StoryEvent);
+
+PROC
+Proc_PartyDecisionDialog_Cleanup((STRING)_PartyDecisionDialogName)
+AND
+DB_PartyDecisionDialog_DualDialogInstance(_PartyDecisionDialogName,_ParentInstance,_TargetInstance)
+THEN
+NOT DB_PartyDecisionDialog_DualDialogInstance(_PartyDecisionDialogName,_ParentInstance,_TargetInstance);
+
+PROC
+Proc_PartyDecisionDialog_Cleanup((STRING)_PartyDecisionDialogName)
+AND
+DB_PartyDecisionDialog_Players(_PartyDecisionDialogName,_Player,_Index)
+THEN
+NOT DB_PartyDecisionDialog_Players(_PartyDecisionDialogName,_Player,_Index);
+//END_REGION
+
+//REGION HelperFunctions (Is used by Party Decision Dialogs and Reflection Dialogs)
+PROC
+Proc_PartyDecisionDialog_DoDialogWithObservers((CHARACTERGUID)_DecisionMaker,(STRING)_PartyDecisionDialogName,(INTEGER)_ParentInstance,(INTEGER)_TargetInstance)
+THEN
+DB_PartyDecisionDialog_Observer(_PartyDecisionDialogName,_DecisionMaker,1);
+DB_PartyDecisionDialog_ObserverCount(_PartyDecisionDialogName,1);
+
+//PDD variant
+PROC
+Proc_PartyDecisionDialog_DoDialogWithObservers((CHARACTERGUID)_DecisionMaker,(STRING)_PartyDecisionDialogName,(INTEGER)_ParentInstance,(INTEGER)_TargetInstance)
+AND
+DB_PartyDecisionDialog_Players(_PartyDecisionDialogName,_Player,_)
+AND
+_Player != _DecisionMaker
+AND
+DB_PartyDecisionDialog_ObserverCount(_PartyDecisionDialogName,_Count)
+AND
+IntegerSum(_Count,1,_NewCount)
+THEN
+DB_PartyDecisionDialog_Observer(_PartyDecisionDialogName,_Player,_NewCount);
+NOT DB_PartyDecisionDialog_ObserverCount(_PartyDecisionDialogName,_Count);
+DB_PartyDecisionDialog_ObserverCount(_PartyDecisionDialogName,_NewCount);
+
+//RD Variant
+PROC
+Proc_PartyDecisionDialog_DoDialogWithObservers((CHARACTERGUID)_DecisionMaker,(STRING)_PartyDecisionDialogName,(INTEGER)_ParentInstance,(INTEGER)_TargetInstance)
+AND
+DB_ReflectionDialog_Players(_PartyDecisionDialogName,_Player,_)
+AND
+_Player != _DecisionMaker
+AND
+DB_PartyDecisionDialog_ObserverCount(_PartyDecisionDialogName,_Count)
+AND
+IntegerSum(_Count,1,_NewCount)
+THEN
+DB_PartyDecisionDialog_Observer(_PartyDecisionDialogName,_Player,_NewCount);
+NOT DB_PartyDecisionDialog_ObserverCount(_PartyDecisionDialogName,_Count);
+DB_PartyDecisionDialog_ObserverCount(_PartyDecisionDialogName,_NewCount);
+
+PROC
+Proc_PartyDecisionDialog_DoDialogWithObservers((CHARACTERGUID)_DecisionMaker,(STRING)_PartyDecisionDialogName,(INTEGER)_ParentInstance,(INTEGER)_TargetInstance)
+AND
+DB_PartyDecisionDialog_ObserverCount(_PartyDecisionDialogName,1)
+THEN
+Proc_DoPartyDecisionDialog(_PartyDecisionDialogName,_DecisionMaker,NULL_00000000-0000-0000-0000-000000000000,NULL_00000000-0000-0000-0000-000000000000,NULL_00000000-0000-0000-0000-000000000000,_ParentInstance,_TargetInstance);
+
+PROC
+Proc_PartyDecisionDialog_DoDialogWithObservers((CHARACTERGUID)_DecisionMaker,(STRING)_PartyDecisionDialogName,(INTEGER)_ParentInstance,(INTEGER)_TargetInstance)
+AND
+DB_PartyDecisionDialog_ObserverCount(_PartyDecisionDialogName,2)
+AND
+DB_PartyDecisionDialog_Observer(_PartyDecisionDialogName,_Player2,2)
+THEN
+Proc_DoPartyDecisionDialog(_PartyDecisionDialogName,_DecisionMaker,_Player2,NULL_00000000-0000-0000-0000-000000000000,NULL_00000000-0000-0000-0000-000000000000,_ParentInstance,_TargetInstance);
+
+PROC
+Proc_PartyDecisionDialog_DoDialogWithObservers((CHARACTERGUID)_DecisionMaker,(STRING)_PartyDecisionDialogName,(INTEGER)_ParentInstance,(INTEGER)_TargetInstance)
+AND
+DB_PartyDecisionDialog_ObserverCount(_PartyDecisionDialogName,3)
+AND
+DB_PartyDecisionDialog_Observer(_PartyDecisionDialogName,_Player2,2)
+AND
+DB_PartyDecisionDialog_Observer(_PartyDecisionDialogName,_Player3,3)
+THEN
+Proc_DoPartyDecisionDialog(_PartyDecisionDialogName,_DecisionMaker,_Player2,_Player3,NULL_00000000-0000-0000-0000-000000000000,_ParentInstance,_TargetInstance);
+
+PROC
+Proc_PartyDecisionDialog_DoDialogWithObservers((CHARACTERGUID)_DecisionMaker,(STRING)_PartyDecisionDialogName,(INTEGER)_ParentInstance,(INTEGER)_TargetInstance)
+AND
+DB_PartyDecisionDialog_ObserverCount(_PartyDecisionDialogName,_Nr)
+AND
+_Nr>=4
+AND
+DB_PartyDecisionDialog_Observer(_PartyDecisionDialogName,_Player2,2)
+AND
+DB_PartyDecisionDialog_Observer(_PartyDecisionDialogName,_Player3,3)
+AND
+DB_PartyDecisionDialog_Observer(_PartyDecisionDialogName,_Player4,4)
+THEN
+Proc_DoPartyDecisionDialog(_PartyDecisionDialogName,_DecisionMaker,_Player2,_Player3,_Player4,_ParentInstance,_TargetInstance);
+
+PROC
+Proc_DoPartyDecisionDialog((STRING)_PartyDecisionDialogName,(CHARACTERGUID)_DecisionMaker,(CHARACTERGUID)_Player2,(CHARACTERGUID)_Player3,(CHARACTERGUID)_Player4,(INTEGER)_ParentInstance,(INTEGER)_TargetInstance)
+AND
+DialogStartPartyDialog(_PartyDecisionDialogName,_ParentInstance,_TargetInstance,_DecisionMaker,_Player2,_Player3,_Player4,1)
+THEN
+CharacterMakeStoryNpc(_DecisionMaker,1);
+CharacterMakeStoryNpc(_Player2,1);
+CharacterMakeStoryNpc(_Player3,1);
+CharacterMakeStoryNpc(_Player4,1);
+
+PROC
+Proc_PartyDecisionDialog_DoDialogWithObservers((CHARACTERGUID)_DecisionMaker,(STRING)_PartyDecisionDialogName,(INTEGER)_ParentInstance,(INTEGER)_TargetInstance)
+AND
+DB_PartyDecisionDialog_ObserverCount(_PartyDecisionDialogName,_Count)
+AND
+DB_PartyDecisionDialog_Observer(_PartyDecisionDialogName,_Player,_Index)
+THEN
+NOT DB_PartyDecisionDialog_ObserverCount(_PartyDecisionDialogName,_Count);
+NOT DB_PartyDecisionDialog_Observer(_PartyDecisionDialogName,_Player,_Index);
+//END_REGION
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "DOS2ModWrapper"

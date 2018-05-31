@@ -1,0 +1,1413 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+DB_Origins_MaxPartySize(4);
+DB_Origins_InitialRegion("FJ_FortJoy_Main");
+
+DB_OriginRecruitmentDialog((CHARACTERGUID)CHARACTERGUID_S_Player_Sebille_c8d55eaf-e4eb-466a-8f0d-6a9447b5b24c,"Sebille_Recruitment");
+DB_OriginRecruitmentDialog(CHARACTERGUID_S_Player_Lohse_bb932b13-8ebf-4ab4-aac0-83e6924e4295,"Lohse_Recruitment");
+DB_OriginRecruitmentDialog(CHARACTERGUID_S_Player_RedPrince_a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f,"RedPrince_Recruitment");
+DB_OriginRecruitmentDialog(CHARACTERGUID_S_Player_Ifan_ad9a3327-4456-42a7-9bf4-7ad60cc9e54f,"Ifan_Recruitment");
+DB_OriginRecruitmentDialog(CHARACTERGUID_S_Player_Beast_f25ca124-a4d2-427b-af62-df66df41a978,"Beast_Recruitment");
+DB_OriginRecruitmentDialog(CHARACTERGUID_S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb,"Fane_Recruitment");
+
+// Override Origin-as-NPC dialog for a particular region. If none defined for the current region, the default is used
+DB_OriginRecruitmentDialog_Region("TUT_Tutorial_A",(CHARACTERGUID)CHARACTERGUID_S_Player_Sebille_c8d55eaf-e4eb-466a-8f0d-6a9447b5b24c,"TUT_LowerDeck_OriginSebille");
+DB_OriginRecruitmentDialog_Region("TUT_Tutorial_A",CHARACTERGUID_S_Player_Lohse_bb932b13-8ebf-4ab4-aac0-83e6924e4295,"TUT_LowerDeck_OriginLohse");
+DB_OriginRecruitmentDialog_Region("TUT_Tutorial_A",CHARACTERGUID_S_Player_RedPrince_a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f,"TUT_LowerDeck_OriginRedPrince");
+DB_OriginRecruitmentDialog_Region("TUT_Tutorial_A",CHARACTERGUID_S_Player_Ifan_ad9a3327-4456-42a7-9bf4-7ad60cc9e54f,"");
+DB_OriginRecruitmentDialog_Region("TUT_Tutorial_A",CHARACTERGUID_S_Player_Beast_f25ca124-a4d2-427b-af62-df66df41a978,"TUT_LowerDeck_OriginBeast");
+DB_OriginRecruitmentDialog_Region("TUT_Tutorial_A",CHARACTERGUID_S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb,"TUT_LowerDeck_OriginFane");
+
+DB_OriginInPartyDialog((CHARACTERGUID)CHARACTERGUID_S_Player_RedPrince_a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f,"RedPrince");
+DB_OriginInPartyDialog(CHARACTERGUID_S_Player_Sebille_c8d55eaf-e4eb-466a-8f0d-6a9447b5b24c,"Sebille");
+DB_OriginInPartyDialog(CHARACTERGUID_S_Player_Lohse_bb932b13-8ebf-4ab4-aac0-83e6924e4295,"Lohse");
+DB_OriginInPartyDialog(CHARACTERGUID_S_Player_Ifan_ad9a3327-4456-42a7-9bf4-7ad60cc9e54f,"Ifan");
+DB_OriginInPartyDialog(CHARACTERGUID_S_Player_Beast_f25ca124-a4d2-427b-af62-df66df41a978,"Beast");
+DB_OriginInPartyDialog(CHARACTERGUID_S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb,"Fane");
+
+DB_OriginWarning1Dialog((CHARACTERGUID)CHARACTERGUID_S_Player_RedPrince_a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f,"RedPrince_Warning1");
+DB_OriginWarning1Dialog(CHARACTERGUID_S_Player_Sebille_c8d55eaf-e4eb-466a-8f0d-6a9447b5b24c,"Sebille_Warning1");
+DB_OriginWarning1Dialog(CHARACTERGUID_S_Player_Lohse_bb932b13-8ebf-4ab4-aac0-83e6924e4295,"Lohse_Warning1");
+DB_OriginWarning1Dialog(CHARACTERGUID_S_Player_Ifan_ad9a3327-4456-42a7-9bf4-7ad60cc9e54f,"Ifan_Warning1");
+DB_OriginWarning1Dialog(CHARACTERGUID_S_Player_Beast_f25ca124-a4d2-427b-af62-df66df41a978,"Beast_Warning1");
+DB_OriginWarning1Dialog(CHARACTERGUID_S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb,"Fane_Warning1");
+
+DB_OriginWarning2Dialog((CHARACTERGUID)CHARACTERGUID_S_Player_RedPrince_a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f,"RedPrince_Warning2");
+DB_OriginWarning2Dialog(CHARACTERGUID_S_Player_Sebille_c8d55eaf-e4eb-466a-8f0d-6a9447b5b24c,"Sebille_Warning2");
+DB_OriginWarning2Dialog(CHARACTERGUID_S_Player_Lohse_bb932b13-8ebf-4ab4-aac0-83e6924e4295,"Lohse_Warning2");
+DB_OriginWarning2Dialog(CHARACTERGUID_S_Player_Ifan_ad9a3327-4456-42a7-9bf4-7ad60cc9e54f,"Ifan_Warning2");
+DB_OriginWarning2Dialog(CHARACTERGUID_S_Player_Beast_f25ca124-a4d2-427b-af62-df66df41a978,"Beast_Warning2");
+DB_OriginWarning2Dialog(CHARACTERGUID_S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb,"Fane_Warning2");
+
+DB_OriginLeavingDialog((CHARACTERGUID)CHARACTERGUID_S_Player_RedPrince_a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f,"RedPrince_Leaving");
+DB_OriginLeavingDialog(CHARACTERGUID_S_Player_Sebille_c8d55eaf-e4eb-466a-8f0d-6a9447b5b24c,"Sebille_Leaving");
+DB_OriginLeavingDialog(CHARACTERGUID_S_Player_Lohse_bb932b13-8ebf-4ab4-aac0-83e6924e4295,"Lohse_Leaving");
+DB_OriginLeavingDialog(CHARACTERGUID_S_Player_Ifan_ad9a3327-4456-42a7-9bf4-7ad60cc9e54f,"Ifan_Leaving");
+DB_OriginLeavingDialog(CHARACTERGUID_S_Player_Beast_f25ca124-a4d2-427b-af62-df66df41a978,"Beast_Leaving");
+DB_OriginLeavingDialog(CHARACTERGUID_S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb,"Fane_Leaving");
+
+// DB_OriginRecruitmentLocation_Region format:
+//  Region, OriginCharacter, Location, behaviour script reaction 
+
+//Tutorial Origin points
+DB_OriginRecruitmentLocation_Region("TUT_Tutorial_A",(CHARACTERGUID)CHARACTERGUID_S_Player_Sebille_c8d55eaf-e4eb-466a-8f0d-6a9447b5b24c,(TRIGGERGUID)S_TUT_Origin_Sebille_Start_Point_14462739-fdbe-4704-aaf1-655e240f613c,"State_Tutorial");
+DB_OriginRecruitmentLocation_Region("TUT_Tutorial_A",CHARACTERGUID_S_Player_RedPrince_a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f,S_TUT_Origin_RedPrince_Start_Point_92e3bf05-146a-4090-ac5b-649221f5aca7,"State_Tutorial");
+DB_OriginRecruitmentLocation_Region("TUT_Tutorial_A",CHARACTERGUID_S_Player_Lohse_bb932b13-8ebf-4ab4-aac0-83e6924e4295,S_TUT_Origin_Lohse_Start_Point_5ea7dc1b-9e72-4c8a-837d-9aaf0eb8ef75,"State_Tutorial");
+DB_OriginRecruitmentLocation_Region("TUT_Tutorial_A",CHARACTERGUID_S_Player_Ifan_ad9a3327-4456-42a7-9bf4-7ad60cc9e54f,S_TUT_Origin_Ifan_Start_Point_116a2f15-43ad-4ca8-9786-607a818f6abb,"State_Tutorial");
+DB_OriginRecruitmentLocation_Region("TUT_Tutorial_A",CHARACTERGUID_S_Player_Beast_f25ca124-a4d2-427b-af62-df66df41a978,S_TUT_Origin_Beast_Start_Point_e43a2fe3-bb04-4883-8ebf-1a3277e89ebb,"State_Tutorial");
+DB_OriginRecruitmentLocation_Region("TUT_Tutorial_A",CHARACTERGUID_S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb,TRIGGERGUID_S_TUT_Origin_Fane_Start_Point_6b099337-511e-4e4b-bdc6-d98fbac599cf,"State_Tutorial");
+
+// Fort Joy origin/recruitment points
+DB_OriginRecruitmentLocation_Region("FJ_FortJoy_Main",(CHARACTERGUID)CHARACTERGUID_S_Player_Sebille_c8d55eaf-e4eb-466a-8f0d-6a9447b5b24c,(TRIGGERGUID)S_FTJ_Origin_SebilleDefault_Point_eefe4cdc-f44a-49c4-9a7a-f576a7a619a0,"State_FortJoy");
+DB_OriginRecruitmentLocation_Region("FJ_FortJoy_Main",CHARACTERGUID_S_Player_Lohse_bb932b13-8ebf-4ab4-aac0-83e6924e4295,TRIGGERGUID_S_FTJ_Origin_LohseDefault_Point_3edc40c9-0f63-416f-b664-1d4a605f4241,"State_FortJoy");
+DB_OriginRecruitmentLocation_Region("FJ_FortJoy_Main",CHARACTERGUID_S_Player_Red_Prince_a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f,TRIGGERGUID_S_FTJ_Origin_RedPrinceDefault_Point_5ed70405-47e0-46ee-9ce7-f5b2a6d5d770,"State_FortJoy");
+DB_OriginRecruitmentLocation_Region("FJ_FortJoy_Main",CHARACTERGUID_S_Player_Ifan_ad9a3327-4456-42a7-9bf4-7ad60cc9e54f,TRIGGERGUID_S_FTJ_Origin_IfanDefault_Point_811d43e1-5c27-4d00-aedf-51b629ac9dc8,"State_FortJoy");
+DB_OriginRecruitmentLocation_Region("FJ_FortJoy_Main",CHARACTERGUID_S_Player_Beast_f25ca124-a4d2-427b-af62-df66df41a978,TRIGGERGUID_S_FTJ_Origin_BeastDefault_Point_2e7e34e8-290a-433b-8e0c-90d8579e7303,"State_FortJoy");
+DB_OriginRecruitmentLocation_Region("FJ_FortJoy_Main",CHARACTERGUID_S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb,TRIGGERGUID_S_FTJ_Origin_FaneDefault_Point_f0023da8-dbf4-4ed9-95be-7d0cd1ce183e,"State_FortJoy");
+
+//Shelter Rrecruitment Point (not a separate region)
+DB_OriginRecruitmentLocation_Region("__Shelter",(CHARACTERGUID)CHARACTERGUID_S_Player_Sebille_c8d55eaf-e4eb-466a-8f0d-6a9447b5b24c,(TRIGGERGUID)TRIGGERGUID_S_FTJ_SW_Origin_SebilleRecruit_Point_29f28941-3e5a-476e-a337-ee0548b0c797,"State_Shelter");
+DB_OriginRecruitmentLocation_Region("__Shelter",CHARACTERGUID_S_Player_RedPrince_a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f,TRIGGERGUID_S_FTJ_SW_Origin_RedPrinceRecruit_Point_e633cf4a-d63d-456d-8ea9-95253fde2d77,"State_Shelter");
+DB_OriginRecruitmentLocation_Region("__Shelter",CHARACTERGUID_S_Player_Lohse_bb932b13-8ebf-4ab4-aac0-83e6924e4295,TRIGGERGUID_S_FTJ_SW_Origin_LohseRecruit_Point_76797d5b-996b-4c2e-a6b9-42e6770905dc,"State_Shelter");
+DB_OriginRecruitmentLocation_Region("__Shelter",CHARACTERGUID_S_Player_Ifan_ad9a3327-4456-42a7-9bf4-7ad60cc9e54f,TRIGGERGUID_S_FTJ_SW_Origin_IfanRecruit_Point_bd1ebe86-9911-4cd0-965e-414016db6799,"State_Shelter");
+DB_OriginRecruitmentLocation_Region("__Shelter",CHARACTERGUID_S_Player_Beast_f25ca124-a4d2-427b-af62-df66df41a978,TRIGGERGUID_S_FTJ_SW_Origin_BeastRecruit_Point_56f6eaa1-ffde-4c8c-b473-c276b5e0e83b,"State_Shelter");
+DB_OriginRecruitmentLocation_Region("__Shelter",CHARACTERGUID_S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb,TRIGGERGUID_S_FTJ_SW_Origin_FaneRecruit_Point_fe0dfb2d-c56f-4c03-adf5-f69fd91a959f,"State_Shelter");
+
+//Lady Vengeance Recruitment Point (and any level after)
+DB_OriginRecruitmentLocation_Region("LV_HoE_Main",(CHARACTERGUID)CHARACTERGUID_S_Player_Sebille_c8d55eaf-e4eb-466a-8f0d-6a9447b5b24c,(TRIGGERGUID)TRIGGERGUID_S_GLO_LV_SebilleRecruit_Point_f660527c-54c7-4261-a38d-d843a53e3276,"State_LadyVengeance");
+DB_OriginRecruitmentLocation_Region("LV_HoE_Main",CHARACTERGUID_S_Player_RedPrince_a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f,TRIGGERGUID_S_GLO_LV_RedPrinceRecruit_Point_6b01eba0-37d8-435e-8a1f-3b5cbcd06ba5,"State_LadyVengeance");
+DB_OriginRecruitmentLocation_Region("LV_HoE_Main",CHARACTERGUID_S_Player_Lohse_bb932b13-8ebf-4ab4-aac0-83e6924e4295,TRIGGERGUID_S_GLO_LV_LohseRecruit_Point_8839cc1e-ac6a-461e-a58b-9b10038d73b6,"State_LadyVengeance");
+DB_OriginRecruitmentLocation_Region("LV_HoE_Main",CHARACTERGUID_S_Player_Ifan_ad9a3327-4456-42a7-9bf4-7ad60cc9e54f,TRIGGERGUID_S_GLO_LV_IfanRecruit_Point_e00a315e-8ee3-4ce2-b52f-dae07a70af50,"State_LadyVengeance");
+DB_OriginRecruitmentLocation_Region("LV_HoE_Main",CHARACTERGUID_S_Player_Beast_f25ca124-a4d2-427b-af62-df66df41a978,TRIGGERGUID_S_GLO_LV_BeastRecruit_Point_317b541d-c58d-48aa-b85b-7ef6fe580685,"State_LadyVengeance");
+DB_OriginRecruitmentLocation_Region("LV_HoE_Main",CHARACTERGUID_S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb,TRIGGERGUID_S_GLO_LV_FaneRecruit_Point_d7bc0df9-226c-4cdd-ad61-79a7e2c62e9a,"State_LadyVengeance");
+
+DB_OriginRecruitmentLocation_Region("ARX_Endgame",(CHARACTERGUID)CHARACTERGUID_S_Player_Sebille_c8d55eaf-e4eb-466a-8f0d-6a9447b5b24c,(TRIGGERGUID)NULL_00000000-0000-0000-0000-000000000000,"");
+DB_OriginRecruitmentLocation_Region("ARX_Endgame",CHARACTERGUID_S_Player_RedPrince_a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f,NULL_00000000-0000-0000-0000-000000000000,"");
+DB_OriginRecruitmentLocation_Region("ARX_Endgame",CHARACTERGUID_S_Player_Lohse_bb932b13-8ebf-4ab4-aac0-83e6924e4295,NULL_00000000-0000-0000-0000-000000000000,"");
+DB_OriginRecruitmentLocation_Region("ARX_Endgame",CHARACTERGUID_S_Player_Ifan_ad9a3327-4456-42a7-9bf4-7ad60cc9e54f,NULL_00000000-0000-0000-0000-000000000000,"");
+DB_OriginRecruitmentLocation_Region("ARX_Endgame",CHARACTERGUID_S_Player_Beast_f25ca124-a4d2-427b-af62-df66df41a978,NULL_00000000-0000-0000-0000-000000000000,"");
+DB_OriginRecruitmentLocation_Region("ARX_Endgame",CHARACTERGUID_S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb,NULL_00000000-0000-0000-0000-000000000000,"");
+
+
+DB_Origins_RecruitmenOnLVLevels("RC_Main");
+DB_Origins_RecruitmenOnLVLevels("CoS_Main");
+DB_Origins_RecruitmenOnLVLevels("ARX_Main");
+
+//Do not remove these DB_s without replacing, even if one of them is an AVATAR
+DB_OriginNPCAlignment((CHARACTERGUID)CHARACTERGUID_S_Player_RedPrince_a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f,"Origin_RedPrince");
+DB_OriginNPCAlignment(CHARACTERGUID_S_Player_Sebille_c8d55eaf-e4eb-466a-8f0d-6a9447b5b24c,"Origin_Sebille");
+DB_OriginNPCAlignment(CHARACTERGUID_S_Player_Lohse_bb932b13-8ebf-4ab4-aac0-83e6924e4295,"Origin_Lohse");
+DB_OriginNPCAlignment(CHARACTERGUID_S_Player_Ifan_ad9a3327-4456-42a7-9bf4-7ad60cc9e54f,"Origin_Ifan");
+DB_OriginNPCAlignment(CHARACTERGUID_S_Player_Beast_f25ca124-a4d2-427b-af62-df66df41a978,"Origin_Beast");
+DB_OriginNPCAlignment(CHARACTERGUID_S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb,"Origin_Fane");
+DB_OriginNPCAlignment(CHARACTERGUID_S_Player_GenericOrigin_7b6c1f26-fe4e-40bd-a5d0-e6ff58cef4fe,"Origin_Generic_1");
+DB_OriginNPCAlignment(CHARACTERGUID_S_Player_GenericOrigin2_c451954c-73bf-46ce-a1d1-caa9bbdc3cfd,"Origin_Generic_2");
+DB_OriginNPCAlignment(CHARACTERGUID_S_Player_GenericOrigin3_41a06985-7851-4c29-8a78-398ccb313f39,"Origin_Generic_3");
+DB_OriginNPCAlignment(CHARACTERGUID_S_Player_GenericOrigin4_41a594ed-b768-4289-9f17-59f701cc6910,"Origin_Generic_4");
+
+GlobalSetFlag("GLO_LohseHasDemons"); // This is used in RC_DW_AD_UseMagicLute to check if Lohse still had the demon in her 
+
+DB_OriginRelationChangeEvent("CompanionRelationUp2",2);
+DB_OriginRelationChangeEvent("CompanionRelationUp5",5);
+DB_OriginRelationChangeEvent("CompanionRelationUp10",10);
+DB_OriginRelationChangeEvent("CompanionRelationUp15",15);
+DB_OriginRelationChangeEvent("CompanionRelationUp20",20);
+DB_OriginRelationChangeEvent("CompanionRelationUp30",30);
+DB_OriginRelationChangeEvent("CompanionRelationUp40",40);
+DB_OriginRelationChangeEvent("CompanionRelationUp50",50);
+DB_OriginRelationChangeEvent("CompanionRelationDown2",-2);
+DB_OriginRelationChangeEvent("CompanionRelationDown5",-5);
+DB_OriginRelationChangeEvent("CompanionRelationDown10",-10);
+DB_OriginRelationChangeEvent("CompanionRelationDown15",-15);
+DB_OriginRelationChangeEvent("CompanionRelationDown20",-20);
+DB_OriginRelationChangeEvent("CompanionRelationDown30",-30);
+DB_OriginRelationChangeEvent("CompanionRelationDown40",-40);
+DB_OriginRelationChangeEvent("CompanionRelationDown50",-50);
+DB_OriginRelationChangeEvent("CompanionRelationDown1000",-1000); //Mostly for debug purposes, if you really want them to leave.
+
+//Origin Relationship Balancing
+DB_OriginRelationModifiers(CHARACTERGUID_S_Player_Ifan_ad9a3327-4456-42a7-9bf4-7ad60cc9e54f,3,5); //Ifan's events are only worth 60%
+
+DB_OriginRelationThresholdEvents("GLO_Relationship_-40Plus",-40);
+DB_OriginRelationThresholdEvents("GLO_Relationship_-30Plus",-30);
+DB_OriginRelationThresholdEvents("GLO_Relationship_-20Plus",-20);
+DB_OriginRelationThresholdEvents("GLO_Relationship_-10Plus",-10);
+DB_OriginRelationThresholdEvents("GLO_Relationship_Positive",0);
+DB_OriginRelationThresholdEvents("GLO_Relationship_10Plus",10);
+DB_OriginRelationThresholdEvents("GLO_Relationship_20Plus",20);
+DB_OriginRelationThresholdEvents("GLO_Relationship_30Plus",30);
+DB_OriginRelationThresholdEvents("GLO_Relationship_40Plus",40);
+DB_OriginRelationThresholdEvents("GLO_Relationship_50Plus",50);
+DB_OriginRelationThresholdEvents("GLO_Relationship_60Plus",60);
+DB_OriginRelationThresholdEvents("GLO_Relationship_70Plus",70);
+DB_OriginRelationThresholdEvents("GLO_Relationship_80Plus",80);
+DB_OriginRelationThresholdEvents("GLO_Relationship_90Plus",90);
+DB_OriginRelationThresholdEvents("GLO_Relationship_100",100);
+
+DB_OriginProfessionTags(CHARACTERGUID_S_Player_RedPrince_a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f,"NOBLE");
+DB_OriginProfessionTags(CHARACTERGUID_S_Player_RedPrince_a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f,"SCHOLAR");
+
+DB_OriginProfessionTags(CHARACTERGUID_S_Player_Beast_f25ca124-a4d2-427b-af62-df66df41a978,"NOBLE");
+DB_OriginProfessionTags(CHARACTERGUID_S_Player_Beast_f25ca124-a4d2-427b-af62-df66df41a978,"BARBARIAN");
+
+DB_OriginProfessionTags(CHARACTERGUID_S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb,"MYSTIC");
+DB_OriginProfessionTags(CHARACTERGUID_S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb,"SCHOLAR");
+
+DB_OriginProfessionTags(CHARACTERGUID_S_Player_Ifan_ad9a3327-4456-42a7-9bf4-7ad60cc9e54f,"SOLDIER");
+DB_OriginProfessionTags(CHARACTERGUID_S_Player_Ifan_ad9a3327-4456-42a7-9bf4-7ad60cc9e54f,"OUTLAW");
+
+DB_OriginProfessionTags(CHARACTERGUID_S_Player_Lohse_bb932b13-8ebf-4ab4-aac0-83e6924e4295,"MYSTIC");
+DB_OriginProfessionTags(CHARACTERGUID_S_Player_Lohse_bb932b13-8ebf-4ab4-aac0-83e6924e4295,"JESTER");
+
+DB_OriginProfessionTags(CHARACTERGUID_S_Player_Sebille_c8d55eaf-e4eb-466a-8f0d-6a9447b5b24c,"SCHOLAR");
+DB_OriginProfessionTags(CHARACTERGUID_S_Player_Sebille_c8d55eaf-e4eb-466a-8f0d-6a9447b5b24c,"OUTLAW");
+
+DB_OriginEquipmentSet((CHARACTERGUID)CHARACTERGUID_S_Player_Lohse_bb932b13-8ebf-4ab4-aac0-83e6924e4295,"Enchanter");
+DB_OriginEquipmentSet(CHARACTERGUID_S_Player_RedPrince_a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f,"Fighter");
+DB_OriginEquipmentSet(CHARACTERGUID_S_Player_Sebille_c8d55eaf-e4eb-466a-8f0d-6a9447b5b24c,"Rogue");
+DB_OriginEquipmentSet(CHARACTERGUID_S_Player_Ifan_ad9a3327-4456-42a7-9bf4-7ad60cc9e54f,"Wayfarer");
+DB_OriginEquipmentSet(CHARACTERGUID_S_Player_Beast_f25ca124-a4d2-427b-af62-df66df41a978,"Battlemage");
+DB_OriginEquipmentSet(CHARACTERGUID_S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb,"Wizard");
+
+//Quest Updates for Permadeath on Companions
+DB_FormerCompanionDeath_QuestUpdate(CHARACTERGUID_S_Player_Ifan_ad9a3327-4456-42a7-9bf4-7ad60cc9e54f,"QuestUpdate_FTJ_COM_Ifan_IfanDead");
+DB_FormerCompanionDeath_QuestUpdate(CHARACTERGUID_S_Player_Lohse_bb932b13-8ebf-4ab4-aac0-83e6924e4295,"QuestUpdate_FTJ_COM_Lohse_LohseDead");
+DB_FormerCompanionDeath_QuestUpdate(CHARACTERGUID_S_Player_Fane_02a77f1f-872b-49ca-91ab-32098c443beb,"QuestUpdate_FTJ_COM_Fane_FaneDead");
+DB_FormerCompanionDeath_QuestUpdate(CHARACTERGUID_S_Player_Sebille_c8d55eaf-e4eb-466a-8f0d-6a9447b5b24c,"QuestUpdate_FTJ_COM_Sebille_SebilleDead");
+DB_FormerCompanionDeath_QuestUpdate(CHARACTERGUID_S_Player_Beast_f25ca124-a4d2-427b-af62-df66df41a978,"QuestUpdate_FTJ_COM_Beast_BeastDead");
+DB_FormerCompanionDeath_QuestUpdate(CHARACTERGUID_S_Player_RedPrince_a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f,"QuestUpdate_FTJ_COM_RedPrince_RedPrinceDead");
+
+
+
+
+KBSECTION
+//REGION Debug
+IF
+TextEventSet("lohseleave")
+THEN
+PROC_GLO_PartyMembers_MakeNPC(CHARACTERGUID_S_Player_Lohse_bb932b13-8ebf-4ab4-aac0-83e6924e4295);
+
+//END_REGION
+
+//REGION Dialogs in which flags are always shared across all shapeshift forms of everyone involved
+// 1) Dialogs involving Origins as NPCs
+IF
+DialogStarted(_,_ID)
+AND
+DB_DialogNPCs(_ID,_NPC,_)
+AND
+DB_OriginRecruitmentLocation_Region("TUT_Tutorial_A",(CHARACTERGUID)_NPC,_,_)
+THEN
+DB_GLO_AllDialogObjectFlagsShared(_ID);
+
+// 2) Dialogs involving multiple player characters
+IF
+DialogStarted(_,_ID)
+AND
+DB_DialogNumPlayers(_ID,_NPlayers)
+AND
+_NPlayers > 1
+THEN
+DB_GLO_AllDialogObjectFlagsShared(_ID);
+
+// Clean up
+IF
+DialogEnded(_,_ID)
+AND
+DB_GLO_AllDialogObjectFlagsShared(_ID)
+THEN
+NOT DB_GLO_AllDialogObjectFlagsShared(_ID);
+//END_REGION
+
+//REGION Recruitment points are always on the LV after LV_HoE_Main
+IF
+DB_OriginRecruitmentLocation_Region("LV_HoE_Main",_Origin,_Trigger,_State)
+AND
+DB_Origins_RecruitmenOnLVLevels(_Level)
+THEN
+DB_OriginRecruitmentLocation_Region(_Level,_Origin,_Trigger,_State);
+//END_REGION
+
+//REGION Alignments as NPC (for GLO_PartyMembers)
+IF
+DB_OriginNPCAlignment(_Origin,_Alignment)
+THEN
+DB_GLO_PartyMembers_OriginalAlignment(_Origin,_Alignment);
+//END_REGION
+
+//REGION Support routines for GLO_PartyMembers
+QRY
+QRY_GLO_PartyMembers_GetInPartyDialog((CHARACTERGUID)_Origin)
+AND
+DB_OriginInPartyDialog(_Origin,_Dialog)
+THEN
+DB_GLO_PartyMembers_InPartyDialog(_Origin,_Dialog);
+//END_REGION
+
+//REGION Update origin recruitment location and dialog depending on the region
+IF
+RegionStarted(_Region)
+AND
+StringConcatenate("GLO_Origins_OriginNPCInitForRegion_",_Region,_Mutex)
+AND
+QueryOnlyOnce(_Mutex)
+THEN
+PROC_GLO_OriginNPCInitForRegion(_Region);
+
+
+PROC
+PROC_GLO_OriginNPCInitForRegion((STRING)_Region)
+AND
+DB_OriginRecruitmentLocation(_Char,_Trigger)
+THEN
+NOT DB_OriginRecruitmentLocation(_Char,_Trigger);
+
+PROC
+PROC_GLO_OriginNPCInitForRegion((STRING)_Region)
+AND
+DB_OriginRecruitmentLocation_Region(_Region,_Char,_Trigger,_State)
+THEN
+// We only enter a region once (except when using the debug book...)
+// NOT DB_OriginRecruitmentLocation_Region(_Region,_Char,_Trigger,_State);
+DB_OriginRecruitmentLocation(_Char,_Trigger);
+SetVarFixedString(_Char,"currentState",_State);
+
+PROC
+PROC_GLO_OriginNPCInitForRegion((STRING)_Region)
+AND
+DB_OriginRecruitmentLocation(_Char,_Trigger)
+AND
+NOT DB_IsPlayer(_Char)
+AND
+CharacterIsDead(_Char,0)
+THEN
+PROC_Helper_SafeTeleportTo(_Char,_Trigger);
+
+// Special case: when coming from Tutorial to Fort Joy, all players and origins must have full health
+PROC
+PROC_GLO_OriginNPCInitForRegion("FJ_FortJoy_Main")
+AND
+DB_OriginRecruitmentLocation(_Char,_Trigger)
+AND
+NOT DB_IsPlayer(_Char)
+AND
+CharacterIsDead(_Char,0)
+THEN
+CharacterSetHitpointsPercentage(_Char,100);
+
+PROC
+PROC_GLO_OriginNPCInitForRegion("FJ_FortJoy_Main")
+AND
+DB_IsPlayer(_Char)
+AND
+CharacterIsDead(_Char,0)
+THEN
+CharacterSetHitpointsPercentage(_Char,100);
+
+// Special case: when coming from Tutorial to Fort Joy, dead origins not in the party have to be revived
+PROC
+PROC_GLO_OriginNPCInitForRegion("FJ_FortJoy_Main")
+AND
+DB_OriginRecruitmentLocation(_Char,_Trigger)
+AND
+NOT DB_IsPlayer(_Char)
+AND
+CharacterIsDead(_Char,1)
+AND
+GetRegion(_Char,"TUT_Tutorial_A")
+THEN
+DB_GLO_OriginNPCResurrectedForFortJoy(_Char);
+CharacterResurrect(_Char);
+TeleportTo(_Char,_Trigger);
+
+IF
+CharacterResurrected(_Char)
+AND
+DB_GLO_OriginNPCResurrectedForFortJoy(_Char)
+AND
+DB_OriginInitialPreset(_Char,_Preset)
+THEN
+NOT DB_OriginInitialPreset(_Char,_Preset);
+// In case they were robbed nekid by enterprising players
+ObjectSetFlag(_Char,_Preset);
+
+//Reset any attitude changes that might have occurred during tutorial combat.
+PROC
+PROC_GLO_OriginNPCInitForRegion("FJ_FortJoy_Main")
+AND
+DB_OriginRecruitmentLocation(_Char,_Trigger)
+AND
+NOT DB_IsPlayer(_Char)
+AND
+DB_Avatars(_Avatar)
+AND
+CharacterGetAttitudeTowardsPlayer(_Char,(CHARACTERGUID)_Avatar,_Att)
+AND
+IntegerProduct(_Att,-1,_MinAtt)
+THEN
+CharacterAddAttitudeTowardsPlayer(_Char,_Avatar,_MinAtt);
+
+PROC
+PROC_GLO_Origins_SetNewRegionDialog((CHARACTERGUID)_Origin)
+AND
+QRY_Origin_GetRecruitmentDialog(_Origin)
+AND
+DB_NewOriginRecruitmentDialog(_Origin,_NewDialog)
+THEN
+NOT DB_NewOriginRecruitmentDialog(_Origin,_NewDialog);
+ProcRemoveAllDialogEntriesForSpeaker(_Origin);
+Proc_GLO_Origins_MaybeSetDefaultDialog(_Origin,_NewDialog);
+
+PROC
+PROC_GLO_OriginNPCInitForRegion((STRING)_Region)
+AND
+IsGameLevel(_Region,1)
+AND
+DB_OriginRecruitmentDialog(_Origin,_)
+AND
+NOT DB_IsPlayer(_Origin)
+AND
+CharacterIsDead(_Origin,0)
+THEN
+PROC_GLO_Origins_SetNewRegionDialog(_Origin);
+
+IF
+CharacterResurrected(_Origin)
+AND
+DB_OriginRecruitmentDialog(_Origin,_)
+AND
+NOT DB_IsPlayer(_Origin)
+THEN
+PROC_GLO_Origins_SetNewRegionDialog(_Origin);
+//END_REGION
+
+//REGION Add / Remove from Party
+// Override dialog for origin-as-NPC
+QRY
+QRY_Origin_GetRecruitmentDialog((CHARACTERGUID)_Origin)
+AND
+DB_GLO_PartyMembers_BlockRecruitmentDialog(_Origin)
+THEN
+DB_NewOriginRecruitmentDialog(_Origin,"");
+
+QRY
+QRY_Origin_GetRecruitmentDialog((CHARACTERGUID)_Origin)
+AND
+NOT DB_NewOriginRecruitmentDialog(_Origin,_)
+AND
+DB_CurrentLevel(_Region)
+AND
+DB_OriginRecruitmentDialog_Region(_Region,_Origin,_Dialog)
+THEN
+DB_NewOriginRecruitmentDialog(_Origin,_Dialog);
+
+// Default dialog for origin-as-NPC
+QRY
+QRY_Origin_GetRecruitmentDialog((CHARACTERGUID)_Origin)
+AND
+NOT DB_NewOriginRecruitmentDialog(_Origin,_)
+AND
+DB_OriginRecruitmentDialog(_Origin,_Dialog)
+THEN
+DB_NewOriginRecruitmentDialog(_Origin,_Dialog);
+
+IF
+ObjectFlagSet("OriginAddToParty",(CHARACTERGUID)_Origin,_ID)
+AND
+DialogGetInvolvedPlayer(_ID,1,(CHARACTERGUID)_Player)
+THEN
+DB_GLO_PartyMembers_RecruitAfterDialog(_ID,_Origin,_Player);
+ObjectClearFlag(_Origin,"OriginAddToParty",0);
+
+IF
+ObjectFlagSet("OriginRemoveFromPartyAfterDialog",(CHARACTERGUID)_Member,_ID)
+THEN
+ObjectClearFlag(_Member,"OriginRemoveFromPartyAfterDialog",0);
+DB_GLO_PartyMembers_DismissAfterDialog(_ID,_Member);
+
+PROC
+PROC_GLO_PartyMembers_MakeNPCHook((CHARACTERGUID)_Origin)
+AND
+DB_OriginNPCAlignment(_Origin,_)
+AND
+QRY_Origin_GetRecruitmentDialog(_Origin)
+AND
+DB_NewOriginRecruitmentDialog(_Origin,_NewDialog)
+AND
+GetFaction(_Origin,_PlayerFaction)
+AND
+DB_OriginNPCAlignment(_Origin,_NpcFaction)
+THEN
+NOT DB_NewOriginRecruitmentDialog(_Origin,_NewDialog);
+ProcCancelAllRelationshipDialogs(_Origin);
+Proc_ReflectionDialog_CancelForPlayer(_Origin);
+// Proc_ReflectionDialog_CancelForPlayer() restores the previous dialog, so only now cancel all existing dialogs
+ProcRemoveAllDialogEntriesForSpeaker(_Origin);
+Proc_GLO_Origins_MaybeSetDefaultDialog(_Origin,_NewDialog);
+SetHasDialog(_Origin,0); // Origin should not have dialog until AFTER they have returned to recruit position
+
+PROC
+Proc_GLO_Origins_MaybeSetDefaultDialog((CHARACTERGUID)_Origin,(STRING)_NewDialog)
+AND
+NOT DB_Avatars(_Origin)
+AND
+_NewDialog != ""
+THEN
+DB_Dialogs(_Origin,_NewDialog);
+
+PROC
+PROC_GLO_PartyMembers_MakeNPCHook((CHARACTERGUID)_Origin)
+AND
+DB_CompanionAvatarBond(_Origin,_Player)
+THEN
+NOT DB_CompanionAvatarBond(_Origin,_Player);
+Proc_CompanionLeftParty(_Origin,_Player);
+
+PROC
+Proc_GLO_Origins_RemoveRecruitmentDialogs((CHARACTERGUID)_Origin)
+AND
+DB_OriginRecruitmentDialog_Region(_Region,_Origin,_Dialog)
+THEN
+NOT DB_OriginRecruitmentDialog_Region(_Region,_Origin,_Dialog);
+
+PROC
+Proc_GLO_Origins_RemoveRecruitmentDialogs((CHARACTERGUID)_Origin)
+AND
+DB_OriginRecruitmentDialog(_Origin,_Dialog)
+THEN
+NOT DB_OriginRecruitmentDialog(_Origin,_Dialog);
+
+PROC
+PROC_GLO_PartyMembers_MakeNPCHook((CHARACTERGUID)_Origin)
+AND
+DB_OriginNPCAlignment(_Origin,_)
+AND
+NOT DB_GLO_PartyMembers_BlockReturnToRecruitmentPosition(_Origin)
+THEN
+ProcOriginReturnToRecruitmentPos(_Origin);
+
+//REGION Return to Recruitment Pos
+PROC
+ProcOriginReturnToRecruitmentPos((CHARACTERGUID)_Origin)
+AND
+DB_OriginRecruitmentLocation(_Origin,_Location)
+AND
+GetDistanceTo(_Origin,_Location,_Dist)
+AND
+_Dist > 18.0
+THEN
+ProcCharacterDisappearOutOfSight(_Origin,0,0,"Origin_RestoreDialog",0);
+
+PROC
+ProcOriginReturnToRecruitmentPos((CHARACTERGUID)_Origin)
+AND
+DB_OriginRecruitmentLocation(_Origin,_Location)
+AND
+GetDistanceTo(_Origin,_Location,_Dist)
+AND
+_Dist <= 18.0
+THEN
+ProcCharacterMoveTo(_Origin,_Location,0,"Origin_RestoreDialog");
+
+// Character creation
+PROC
+ProcOriginReturnToRecruitmentPos((CHARACTERGUID)_Origin)
+AND
+NOT DB_OriginRecruitmentLocation(_Origin,_)
+AND
+DB_Origins_InitialRegion(_InitialRegion)
+AND
+DB_OriginRecruitmentLocation_Region(_InitialRegion,_Origin,_Location,_)
+THEN
+TeleportTo(_Origin,_Location);
+SetStoryEvent(_Origin,"Origin_RestoreDialog");
+
+// Not character creation
+IF
+StoryEvent((CHARACTERGUID)_Origin,"Origin_RestoreDialog")
+AND
+DB_OriginRecruitmentLocation(_Origin,_Location)
+THEN
+TeleportTo(_Origin,_Location);
+
+// Character Creation
+IF
+StoryEvent((CHARACTERGUID)_Origin,"Origin_RestoreDialog")
+AND
+NOT DB_OriginRecruitmentLocation(_Origin,_)
+AND
+DB_Origins_InitialRegion(_Region)
+AND
+DB_OriginRecruitmentLocation_Region(_Region,_Origin,_Location,_)
+THEN
+TeleportTo(_Origin,_Location);
+
+IF
+StoryEvent((CHARACTERGUID)_Origin,"Origin_RestoreDialog")
+THEN
+SetOnStage(_Origin,1);
+SetHasDialog(_Origin,1);
+//END_REGION
+
+PROC
+PROC_GLO_PartyMembers_RecruiteeAvatarBond((CHARACTERGUID)_Companion,(CHARACTERGUID)_Avatar)
+AND
+DB_OriginNPCAlignment(_Companion,_)
+THEN
+DB_CompanionAvatarBond(_Companion,_Avatar);
+
+PROC
+PROC_GLO_PartyMembers_ClearRecruiteeBonds((CHARACTERGUID)_Companion)
+AND
+DB_CompanionAvatarBond(_Companion,_Avatar)
+THEN
+NOT DB_CompanionAvatarBond(_Companion,_Avatar);
+
+PROC
+Proc_BondedAvatarTutorial((CHARACTERGUID)_Avatar)
+AND
+SysCount("DB_Avatars",1,_AvatarCount)
+AND
+_AvatarCount > 1
+AND
+DB_InitialTutorialsShown(1)
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterIsInPartyWith(_Avatar,_Player,1)
+THEN
+Proc_CheckPlayTut(_Player,"TUT_BondedAvatar");
+
+PROC
+Proc_UnlockSourcePointsAndPowers((CHARACTERGUID)_Companion,(CHARACTERGUID)_Avatar)
+AND
+CharacterGetMaxSourcePoints(_Companion,_CompanionSP)
+AND
+CharacterGetMaxSourcePoints(_Avatar,2)
+AND
+_CompanionSP < 2
+THEN
+ObjectSetFlag(_Companion,"GLO_Has2MaxMP");
+CharacterOverrideMaxSourcePoints(_Companion,2);
+
+PROC
+Proc_UnlockSourcePointsAndPowers((CHARACTERGUID)_Companion,(CHARACTERGUID)_Avatar)
+AND
+CharacterGetMaxSourcePoints(_Companion,_CompanionSP)
+AND
+CharacterGetMaxSourcePoints(_Avatar,3)
+AND
+_CompanionSP < 3
+THEN
+ObjectSetFlag(_Companion,"GLO_Has2MaxMP");
+ObjectSetFlag(_Companion,"GLO_Has3MaxMP");
+CharacterOverrideMaxSourcePoints(_Companion,3);
+
+PROC
+Proc_UnlockSourcePointsAndPowers((CHARACTERGUID)_Companion,(CHARACTERGUID)_Avatar)
+AND
+ObjectGetFlag(_Avatar,"GLO_HasSpiritVision",1)
+AND
+ObjectGetFlag(_Companion,"GLO_HasSpiritVision",0)
+THEN
+CharacterAddSkill(_Companion,"Shout_SpiritVision");
+
+PROC
+Proc_UnlockSourcePointsAndPowers((CHARACTERGUID)_Companion,(CHARACTERGUID)_Avatar)
+AND
+ObjectGetFlag(_Avatar,"GLO_HasSourceVampirism",1)
+AND
+ObjectGetFlag(_Companion,"GLO_HasSourceVampirism",0)
+THEN
+CharacterAddSkill(_Companion,"Target_SourceVampirism");
+
+PROC
+Proc_UnlockSourcePointsAndPowers((CHARACTERGUID)_Companion,(CHARACTERGUID)_Avatar)
+AND
+ObjectGetFlag(_Avatar,"RC_DW_Meistr_KnowCoS",1)
+THEN
+ObjectSetFlag(_Companion,"GLO_HasSourceVampirism");
+
+PROC
+ProcAssignCharacterToPlayer((CHARACTERGUID)_Char,(CHARACTERGUID)_Player)
+AND
+CharacterGetReservedUserID(_Player,_User)
+THEN
+CharacterAssignToUser(_User,_Char);
+
+//REGION Check Party Size
+//Check for Solo Player
+PROC
+Proc_CheckPartyFull()
+AND
+SysCount("DB_IsPlayer",1,_Int)
+AND
+_Int == 1
+THEN
+GlobalSetFlag("GEN_SoloPlayer");
+
+//Check for Max Player count
+PROC
+Proc_CheckPartyFull()
+AND
+SysCount("DB_IsPlayer",1,_Int)
+AND
+_Int != 1
+THEN
+GlobalClearFlag("GEN_SoloPlayer");
+
+PROC
+Proc_CheckPartyFull()
+AND
+SysCount("DB_IsPlayer",1,_Int)
+AND
+DB_Origins_MaxPartySize(_Max)
+AND
+_Int == _Max
+THEN
+GlobalSetFlag("GEN_MaxPlayerCountReached");
+
+PROC
+Proc_CheckPartyFull()
+AND
+SysCount("DB_IsPlayer",1,_Int)
+AND
+DB_Origins_MaxPartySize(_Max)
+AND
+_Int < _Max
+THEN
+GlobalClearFlag("GEN_MaxPlayerCountReached");
+//END_REGION
+//END_REGION
+
+//REGION User Companion Differentiation
+PROC
+PROC_GLOBAL_DialogStartRequested((CHARACTERGUID)_Player,(CHARACTERGUID)_OtherPlayer)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_IsPlayer(_OtherPlayer)
+AND
+CharacterGetReservedUserID(_Player,_PID)
+AND
+CharacterGetReservedUserID(_OtherPlayer,_OPID)
+AND
+_PID == _OPID
+THEN
+ObjectSetFlag(_OtherPlayer,"UserOwnedPlayerCharacter");
+
+IF
+DialogEnded(_,_ID)
+AND
+DialogGetInvolvedPlayer(_ID,1,_Player)
+AND
+ObjectGetFlag(_Player,"UserOwnedPlayerCharacter",1)
+THEN
+ObjectClearFlag(_Player,"UserOwnedPlayerCharacter",0);
+
+//END_REGION
+
+//REGION Tag Priority Dialogs
+PROC
+PROC_GLOBAL_DialogStartRequested((CHARACTERGUID)_NPC,(CHARACTERGUID)_Player)
+THEN
+PROC_GLO_Origins_CheckTagPriorityDialogs(_NPC,_Player);
+
+PROC
+PROC_GLO_Origins_CheckTagPriorityDialogs((CHARACTERGUID)_NPC,(CHARACTERGUID)_Player)
+AND
+DB_TagPriorityDialog(_NPC,_Dialog,_PriorityTag)
+AND
+NOT DB_GLO_OriginsFoundTagPriorityPlayer(1)
+AND
+IsTagged(_Player,_PriorityTag,0)
+AND
+DB_IsPlayer(_OtherPlayer)
+AND
+QRY_SpeakerIsAvailable(_OtherPlayer)
+AND
+_OtherPlayer != _Player
+AND
+CharacterGetReservedUserID(_Player,_ID)
+AND
+CharacterGetReservedUserID(_OtherPlayer,_ID)
+AND
+IsTagged(_OtherPlayer,_PriorityTag,1)
+AND
+GetDistanceTo(_Player,_OtherPlayer,_Dist)
+AND
+_Dist < 10.0
+THEN
+DB_GLO_OriginsFoundTagPriorityPlayer(1);
+ProcForceStopDialog(_NPC);
+Proc_StartDialog(0,_Dialog,_NPC,_OtherPlayer);
+PROC_GLO_Origins_ClearTaggedPrioritiesForDialog(_Dialog);
+
+PROC
+PROC_GLO_Origins_ClearTaggedPrioritiesForDialog((STRING)_Dialog)
+AND
+DB_TagPriorityDialog(_NPC,_Dialog,_PriorityTag)
+THEN
+NOT DB_TagPriorityDialog(_NPC,_Dialog,_PriorityTag);
+
+PROC
+PROC_GLO_Origins_CheckTagPriorityDialogs((CHARACTERGUID)_NPC,(CHARACTERGUID)_Player)
+THEN
+NOT DB_GLO_OriginsFoundTagPriorityPlayer(1);
+
+//END_REGION
+
+
+//REGION Origin Hostility
+IF
+ObjectFlagSet("SetOriginHostileAfterDialog",_UnRecruitedOrigin,_)
+THEN
+DB_SetOriginHostileAfterDialog(_UnRecruitedOrigin);
+ObjectClearFlag(_UnRecruitedOrigin,"SetOriginHostileToOtherOrigins",0);
+
+IF
+DialogEnded(_,_ID)
+AND
+DB_SetOriginHostileAfterDialog(_UnRecruitedOrigin)
+AND
+DialogGetInvolvedNPC(_ID,1,(CHARACTERGUID)_UnRecruitedOrigin)
+AND
+GetFaction(_UnRecruitedOrigin,_PreviousFaction)
+THEN
+NOT DB_SetOriginHostileAfterDialog(_UnRecruitedOrigin);
+ProcSetRelationToPlayers(_UnRecruitedOrigin,0);
+DB_ResetOriginAlignmentAfterCombat(_UnRecruitedOrigin,_PreviousFaction);
+
+IF
+ObjectLeftCombat(_UnRecruitedOrigin,_)
+AND
+DB_ResetOriginAlignmentAfterCombat((CHARACTERGUID)_UnRecruitedOrigin,_PreviousFaction)
+THEN
+SetFaction(_UnRecruitedOrigin,_PreviousFaction);
+NOT DB_ResetOriginAlignmentAfterCombat(_UnRecruitedOrigin,_PreviousFaction);
+
+/*
+IF
+ObjectFlagSet("FactionHostileToIndivPlayerAfterDialog",_,_ID)
+AND
+DialogGetInvolvedNPC(_ID,1,(CHARACTERGUID)_Origin)
+AND
+DB_GLO_PartyMembers_DefaultFaction(_Origin,_PlayerFaction)
+THEN
+SetFaction(_Origin,_PlayerFaction);
+*/
+//END_REGION
+ 
+//REGION Avatar Tracking
+//Avatar DB_ to keep track of counts
+IF
+ObjectWasTagged((CHARACTERGUID)_Avatar,"AVATAR")
+AND
+NOT DB_Avatars(_Avatar)
+THEN
+DB_Avatars(_Avatar);
+
+//For Story Reloads
+IF
+DB_IsPlayer(_Avatar)
+AND
+IsTagged((CHARACTERGUID)_Avatar,"AVATAR",1)
+AND
+NOT DB_Avatars(_Avatar)
+THEN
+DB_Avatars(_Avatar);
+
+IF
+ObjectLostTag((CHARACTERGUID)_Avatar,"AVATAR")
+AND
+DB_Avatars(_Avatar)
+THEN
+NOT DB_Avatars(_Avatar);
+//END_REGION
+
+//REGION Resurrection Blocking Spell
+IF
+CharacterUsedSkillOnTarget(_,(CHARACTERGUID)_Origin,"Target_AntiResurrection",_)
+THEN
+SetTag(_Origin,"BLOCK_RESURRECTION");
+
+IF
+CharacterUsedSkillOnTarget(_,(CHARACTERGUID)_Origin,"Target_AntiResurrection",_)
+AND
+IsTagged(_Origin,"AVATAR",0)
+THEN
+DB_GLO_PartyMembers_BlockReturnToRecruitmentPosition(_Origin);
+PROC_GLO_PartyMembers_Remove(_Origin,(CHARACTERGUID)NULL_00000000-0000-0000-0000-000000000000,0);
+CharacterPurgeQueue(_Origin);
+
+//END_REGION
+
+//REGION Relationship changes
+IF
+ObjectFlagSet(_Event,(CHARACTERGUID)_Companion,_Inst)
+AND
+DB_OriginRelationChangeEvent(_Event,_Amount)
+AND
+DB_CompanionAvatarBond((CHARACTERGUID)_Companion,_Player)
+AND
+CharacterGetAttitudeTowardsPlayer(_Companion,(CHARACTERGUID)_Player,_CurrentAttitude)
+AND
+QRY_OriginRelationModify(_Companion,_Amount)
+AND
+DB_OriginRelationModifiedAmount(_NewAmount)
+AND
+IntegerSum(_CurrentAttitude,_NewAmount,_NewAttitude)
+THEN
+PROC_OriginWarningBlockRemoval(_Companion,_NewAmount);
+ObjectClearFlag(_Companion,_Event);
+PROC_CheckPlayTut(_Player,"TUT_Relationship_Examine");
+DB_SetCompanionAttitude(_Companion,_Player,_NewAttitude);
+
+IF
+ObjectFlagSet(_Event,(CHARACTERGUID)_Companion,_Inst)
+AND
+DB_OriginRelationChangeEvent(_Event,_Amount)
+AND
+NOT DB_CompanionAvatarBond(_Companion,_)
+AND
+DB_DialogPlayers(_Inst,_Player,_)
+AND
+_Player != _Companion
+AND
+CharacterGetAttitudeTowardsPlayer(_Companion,(CHARACTERGUID)_Player,_CurrentAttitude)
+AND
+QRY_OriginRelationModify(_Companion,_Amount)
+AND
+DB_OriginRelationModifiedAmount(_NewAmount)
+AND
+IntegerSum(_CurrentAttitude,_NewAmount,_NewAttitude)
+THEN
+PROC_OriginWarningBlockRemoval(_Companion,_NewAmount);
+ObjectClearFlag(_Companion,_Event);
+DB_SetCompanionAttitude(_Companion,_Player,_NewAttitude);
+
+QRY
+QRY_OriginRelationModify((CHARACTERGUID)_Companion,(INTEGER)_Amount)
+AND
+QRY_OriginRelationModify_Reset() //Resets the return variable, always returns true
+AND
+DB_OriginRelationModifiers(_Companion,(INTEGER)_Multiply,(INTEGER)_Divide)
+AND
+IntegerProduct(_Amount,_Multiply,_Intermediate)
+AND
+IntegerDivide(_Intermediate,_Divide,_NewAmount)
+THEN
+DB_OriginRelationModifiedAmount(_NewAmount);
+
+QRY
+QRY_OriginRelationModify((CHARACTERGUID)_Companion,(INTEGER)_Amount)
+AND
+NOT DB_OriginRelationModifiedAmount(_)
+THEN
+DB_OriginRelationModifiedAmount(_Amount);
+
+QRY
+QRY_OriginRelationModify_Reset()
+AND
+DB_OriginRelationModifiedAmount(_NewAmount)
+THEN
+NOT DB_OriginRelationModifiedAmount(_NewAmount);
+
+QRY
+QRY_OriginRelationModify_Reset()
+THEN
+DB_NoOp(1);
+
+//Every time a warning is given, a block is set on new warnings until a new drop in attitude occurs.
+PROC
+PROC_OriginWarningBlockRemoval((CHARACTERGUID)_Companion,(INTEGER)_Amount)
+AND
+_Amount < 0
+THEN
+NOT DB_OriginWarningBlock(_Companion);
+
+IF
+DB_SetCompanionAttitude(_Companion,_Player,_NewAttitude)
+AND
+_NewAttitude > 100
+THEN
+NOT DB_SetCompanionAttitude(_Companion,_Player,_NewAttitude);
+DB_SetCompanionAttitude(_Companion,_Player,100);
+
+IF
+DB_SetCompanionAttitude(_Companion,_Player,_NewAttitude)
+AND
+_NewAttitude < -50
+THEN
+NOT DB_SetCompanionAttitude(_Companion,_Player,_NewAttitude);
+DB_SetCompanionAttitude(_Companion,_Player,-50);
+
+IF
+DB_SetCompanionAttitude(_Companion,_Player,_NewAttitude)
+AND
+_NewAttitude <= 100
+AND
+_NewAttitude >= -50
+AND
+CharacterGetAttitudeTowardsPlayer(_Companion,_Player,_CurrentAttitude)
+AND
+IntegerSubtract(_NewAttitude,_CurrentAttitude,_Delta)
+THEN
+CharacterAddAttitudeTowardsPlayer(_Companion,_Player,_Delta);
+NOT DB_SetCompanionAttitude(_Companion,_Player,_NewAttitude);
+
+IF
+DB_OriginInPartyDialog(_Companion,_Dialog)
+THEN
+DB_OriginDialog((CHARACTERGUID)_Companion,_Dialog);
+
+PROC
+Proc_RelationshipDialog((CHARACTERGUID)_Companion,(STRING)_Dialog,(CHARACTERGUID)_Anchor)
+THEN
+DB_OriginDialog(_Companion,_Dialog);
+
+IF
+DialogEnded(_Dialog,_ID)
+AND
+NOT DB_Origin_BlockLeavingWarningsDialogs(1)
+AND
+DB_OriginDialog(_Companion,_Dialog)
+AND
+DB_DialogPlayers(_ID,_Companion,_)
+AND
+NOT DB_GLO_PartyMembers_DismissAfterDialog(_ID,_Companion)
+AND
+DB_CompanionAvatarBond((CHARACTERGUID)_Companion,(CHARACTERGUID)_Player)
+AND
+DB_DialogPlayers(_ID,_Player,_)
+AND
+DB_OriginWarning1Dialog(_Companion,_Warning1Dialog)
+AND
+CharacterGetAttitudeTowardsPlayer(_Companion,_Player,_Attitude)
+AND
+_Attitude <= -20
+AND
+QRY_StartDialog(0,_Warning1Dialog,_Companion,_Player)
+THEN
+NOT DB_OriginWarning1Dialog(_Companion,_Warning1Dialog);
+DB_OriginWarningBlock(_Companion);
+
+IF
+DialogEnded(_Dialog,_ID)
+AND
+NOT DB_Origin_BlockLeavingWarningsDialogs(1)
+AND
+DB_OriginDialog(_Companion,_Dialog)
+AND
+NOT DB_OriginWarningBlock(_Companion)
+AND
+NOT DB_GLO_PartyMembers_DismissAfterDialog(_ID,_Companion)
+AND
+DB_DialogPlayers(_ID,_Companion,_)
+AND
+DB_CompanionAvatarBond((CHARACTERGUID)_Companion,(CHARACTERGUID)_Player)
+AND
+DB_DialogPlayers(_ID,_Player,_)
+AND
+DB_OriginWarning2Dialog(_Companion,_Warning2Dialog)
+AND
+CharacterGetAttitudeTowardsPlayer(_Companion,_Player,_Attitude)
+AND
+_Attitude <= -40
+AND
+QRY_StartDialog(0,_Warning2Dialog,_Companion,_Player)
+THEN
+NOT DB_OriginWarning2Dialog(_Companion,_Warning2Dialog);
+DB_OriginWarningBlock(_Companion);
+
+IF
+DialogEnded(_Dialog,_ID)
+AND
+NOT DB_Origin_BlockLeavingWarningsDialogs(1)
+AND
+DB_OriginDialog(_Companion,_Dialog)
+AND
+NOT DB_OriginWarningBlock(_Companion)
+AND
+NOT DB_GLO_PartyMembers_DismissAfterDialog(_ID,_Companion)
+AND
+DB_DialogPlayers(_ID,_Companion,_)
+AND
+DB_CompanionAvatarBond((CHARACTERGUID)_Companion,(CHARACTERGUID)_Player)
+AND
+DB_DialogPlayers(_ID,_Player,_)
+AND
+NOT DB_CompanionLeaving(_Companion,_)
+AND
+CharacterGetAttitudeTowardsPlayer(_Companion,_Player,_Attitude)
+AND
+_Attitude <= -50
+AND
+DB_OriginLeavingDialog(_Companion,_LeaveDialog)
+THEN
+Proc_StartDialog(0,_LeaveDialog,_Companion,_Player);
+
+PROC
+PROC_Origins_CompanionLeavePermanently((CHARACTERGUID)_Companion)
+AND
+DB_CompanionAvatarBond(_Companion,_Player)
+THEN
+DB_GLO_PartyMembers_BlockReturnToRecruitmentPosition(_Companion);
+Proc_GLO_Origins_RemoveRecruitmentDialogs(_Companion);
+PROC_GLO_PartyMembers_MakeNPC(_Companion);
+NOT DB_NoLowAttitudeDialog(_Companion);
+NOT DB_GLO_PartyMembers_BlockReturnToRecruitmentPosition(_Companion);
+NOT DB_CompanionAvatarBond(_Companion,_Player);
+Proc_CompanionLeftParty(_Companion,_Player);
+Proc_OriginLeft(_Companion,"");
+
+PROC
+PROC_Origins_CompanionLeavePermanently((CHARACTERGUID)_Companion)
+AND
+DB_OriginInPartyDialog(_Companion,_Dialog)
+THEN
+NOT DB_OriginInPartyDialog(_Companion,_Dialog);
+
+PROC
+PROC_Origins_CompanionLeavePermanently((CHARACTERGUID)_Companion)
+AND
+DB_OriginRecruitmentLocation(_Companion,_Location)
+THEN
+NOT DB_OriginRecruitmentLocation(_Companion,_Location);
+
+IF
+DialogEnded(_OriginLeavingDialog,_Inst)
+AND
+DB_OriginLeavingDialog(_Companion,_OriginLeavingDialog)
+AND
+ObjectGetFlag(_Companion,"GLO_Companion_Leave",1)
+AND
+DB_CompanionAvatarBond((CHARACTERGUID)_Companion,(CHARACTERGUID)_Player)
+THEN
+PROC_Origins_CompanionLeavePermanently(_Companion);
+NOT DB_OriginLeavingDialog(_Companion,_OriginLeavingDialog);
+DB_CompanionLeaving(_Companion,_Player);
+CharacterMakeStoryNpc(_Companion,1);
+ProcCharacterDisappearOutOfSight(_Companion,0,1,"GLO_CompanionLeaves_LowRelation",1);
+Proc_OriginLeft(_Companion,"_LowRelation");
+
+IF
+DialogEnded(_OriginLeavingDialog,_Inst)
+AND
+DB_OriginLeavingDialog(_Companion,_OriginLeavingDialog)
+AND
+ObjectGetFlag(_Companion,"GLO_Companion_Murder",1)
+AND
+DB_CompanionAvatarBond((CHARACTERGUID)_Companion,(CHARACTERGUID)_Player)
+AND
+DB_OriginRecruitmentLocation(_Companion,_Location)
+THEN
+NOT DB_OriginLeavingDialog(_Companion,_OriginLeavingDialog);
+CharacterMakeNPC(_Companion);
+NOT DB_OriginRecruitmentLocation(_Companion,_Location);
+CharacterDie(_Companion,1,"DoT");
+NOT DB_IsPlayer(_Companion);
+NOT DB_CompanionAvatarBond(_Companion,_Player);
+Proc_CompanionLeftParty(_Companion,_Player);
+Proc_CheckPartyFull();
+
+IF
+DialogEnded(_OriginLeavingDialog,_Inst)
+AND
+DB_OriginLeavingDialog(_Companion,_OriginLeavingDialog)
+AND
+ObjectGetFlag(_Companion,"GLO_Companion_Combat",1)
+AND
+DB_CompanionAvatarBond((CHARACTERGUID)_Companion,(CHARACTERGUID)_Player)
+AND
+DB_OriginRecruitmentLocation(_Companion,_Location)
+THEN
+PROC_Origins_CompanionLeavePermanently(_Companion);
+NOT DB_OriginLeavingDialog(_Companion,_OriginLeavingDialog);
+SetVarFixedString(_Companion,"currentState","");
+SetRelationIndivFactionToPlayers(_Companion,0);
+Proc_OriginLeft(_Companion,"_LowRelation");
+
+IF
+StoryEvent(_Companion,"GLO_CompanionLeaves_LowRelation")
+AND
+DB_CompanionLeaving((CHARACTERGUID)_Companion,(CHARACTERGUID)_Player)
+THEN
+NOT DB_CompanionLeaving(_Companion,_Player);
+PROC_GLO_PartyMembers_TransferInventoryToPlayer(_Companion,_Player);
+
+IF
+ItemAddedToContainer(_Item,_BackPack)
+AND
+DB_CompanionLeavingBackPack((CHARACTERGUID)_Companion,(CHARACTERGUID)_Player,_BackPack)
+AND
+ItemGetOriginalOwner(_Item,_Companion)
+THEN
+ItemSetOriginalOwner(_Item,_Player);
+
+
+IF
+DB_CompanionAvatarBond(_Companion,_Player)
+AND
+CharacterGetAttitudeTowardsPlayer(_Companion,_Player,_Attitude)
+AND
+DB_OriginRelationThresholdEvents(_Event,_Threshold)
+AND
+_Attitude >= _Threshold
+THEN
+ObjectSetFlag(_Companion,_Event);
+
+IF
+DB_CompanionAvatarBond(_Companion,_Player)
+AND
+CharacterGetAttitudeTowardsPlayer(_Companion,_Player,_Attitude)
+AND
+DB_OriginRelationThresholdEvents(_Event,_Threshold)
+AND
+_Attitude < _Threshold
+THEN
+ObjectClearFlag(_Companion,_Event);
+
+
+IF
+CharacterAttitudeTowardsPlayerChanged(_Companion,_Player,_Attitude)
+AND
+DB_CompanionAvatarBond(_Companion,_Player)
+AND
+DB_OriginRelationThresholdEvents(_Event,_Threshold)
+AND
+_Attitude >= _Threshold
+THEN
+ObjectSetFlag(_Companion,_Event);
+
+IF
+CharacterAttitudeTowardsPlayerChanged(_Companion,_Player,_Attitude)
+AND
+DB_CompanionAvatarBond(_Companion,_Player)
+AND
+DB_OriginRelationThresholdEvents(_Event,_Threshold)
+AND
+_Attitude < _Threshold
+THEN
+ObjectClearFlag(_Companion,_Event);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Companion,(GUIDSTRING)_Player)
+AND
+DB_OriginRecruitmentDialog((CHARACTERGUID)_Companion,_Dialog)
+AND
+CharacterGetAttitudeTowardsPlayer(_Companion,(CHARACTERGUID)_Player,_Attitude)
+AND
+DB_OriginRelationThresholdEvents(_Event,_Threshold)
+AND
+_Attitude >= _Threshold
+THEN
+ObjectSetFlag(_Companion,_Event);
+
+PROC
+Proc_DialogFlagSetup((STRING)_Dialog,(GUIDSTRING)_Companion,(GUIDSTRING)_Player)
+AND
+DB_OriginRecruitmentDialog((CHARACTERGUID)_Companion,_Dialog)
+AND
+CharacterGetAttitudeTowardsPlayer(_Companion,(CHARACTERGUID)_Player,_Attitude)
+AND
+DB_OriginRelationThresholdEvents(_Event,_Threshold)
+AND
+_Attitude < _Threshold
+THEN
+ObjectClearFlag(_Companion,_Event);
+
+//END_REGION
+
+//REGION New Companion Dialog for Act 2
+IF
+DB_Chapter(_Player,_Chapter)
+AND
+_Chapter >= 5
+THEN
+NOT DB_OriginInPartyDialog(CHARACTERGUID_S_Player_Ifan_ad9a3327-4456-42a7-9bf4-7ad60cc9e54f,"Ifan");
+DB_OriginInPartyDialog((CHARACTERGUID)CHARACTERGUID_S_Player_Ifan_ad9a3327-4456-42a7-9bf4-7ad60cc9e54f,"Ifan2");
+NOT DB_OriginInPartyDialog(CHARACTERGUID_S_Player_Lohse_bb932b13-8ebf-4ab4-aac0-83e6924e4295,"Lohse");
+DB_OriginInPartyDialog((CHARACTERGUID)CHARACTERGUID_S_Player_Lohse_bb932b13-8ebf-4ab4-aac0-83e6924e4295,"Lohse2");
+NOT DB_OriginInPartyDialog(CHARACTERGUID_S_Player_Sebille_c8d55eaf-e4eb-466a-8f0d-6a9447b5b24c,"Sebille");
+DB_OriginInPartyDialog((CHARACTERGUID)CHARACTERGUID_S_Player_Sebille_c8d55eaf-e4eb-466a-8f0d-6a9447b5b24c,"Sebille2");
+NOT DB_OriginInPartyDialog(CHARACTERGUID_S_Player_RedPrince_a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f,"RedPrince");
+DB_OriginInPartyDialog((CHARACTERGUID)CHARACTERGUID_S_Player_RedPrince_a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f,"RedPrince2");
+
+
+IF
+DB_Chapter(_Player,_Chapter)
+AND
+_Chapter >= 5
+AND
+DB_Dialogs(CHARACTERGUID_S_Player_Ifan_ad9a3327-4456-42a7-9bf4-7ad60cc9e54f,"Ifan")
+THEN
+PROC_GLO_PartyMembers_SetInpartyDialog(CHARACTERGUID_S_Player_Ifan_ad9a3327-4456-42a7-9bf4-7ad60cc9e54f,"Ifan2");
+
+IF
+DB_Chapter(_Player,_Chapter)
+AND
+_Chapter >= 5
+AND
+DB_Dialogs(CHARACTERGUID_S_Player_Lohse_bb932b13-8ebf-4ab4-aac0-83e6924e4295,"Lohse")
+THEN
+PROC_GLO_PartyMembers_SetInpartyDialog(CHARACTERGUID_S_Player_Lohse_bb932b13-8ebf-4ab4-aac0-83e6924e4295,"Lohse2");
+
+IF
+DB_Chapter(_Player,_Chapter)
+AND
+_Chapter >= 5
+AND
+DB_Dialogs(CHARACTERGUID_S_Player_Sebille_c8d55eaf-e4eb-466a-8f0d-6a9447b5b24c,"Sebille")
+THEN
+PROC_GLO_PartyMembers_SetInpartyDialog(CHARACTERGUID_S_Player_Sebille_c8d55eaf-e4eb-466a-8f0d-6a9447b5b24c,"Sebille2");
+
+IF
+DB_Chapter(_Player,_Chapter)
+AND
+_Chapter >= 5
+AND
+DB_Dialogs(CHARACTERGUID_S_Player_RedPrince_a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f,"RedPrince")
+THEN
+PROC_GLO_PartyMembers_SetInpartyDialog(CHARACTERGUID_S_Player_RedPrince_a26a1efb-cdc8-4cf3-a7b2-b2f9544add6f,"RedPrince2");
+//END_REGION
+
+//REGION Companions cant recruit companions
+//Companion in party with initiates conversation with unhired companion.
+PROC
+Proc_StartDialog(0,(STRING)_RecruitementDialog,(GUIDSTRING)_UnhiredCompanion,(GUIDSTRING)_NonAvatar)
+AND
+DB_OriginRecruitmentDialog((CHARACTERGUID)_UnhiredCompanion,_RecruitementDialog)
+AND
+NOT DB_Avatars((CHARACTERGUID)_NonAvatar)
+AND
+DB_CompanionAvatarBond((CHARACTERGUID)_NonAvatar,(CHARACTERGUID)_Avatar)
+AND
+QRY_SpeakerIsAvailableAndInDialogRange(_Avatar,_NonAvatar)
+AND
+CharacterIsControlled(_Avatar,0)
+AND
+QRY_StartDialog(0,_RecruitementDialog,_UnhiredCompanion,_Avatar)
+THEN
+PROC_CheckPlayTut(_Avatar,"TUT_Comp_Talking_To_Comp");
+MakePlayerActive(_Avatar);
+
+PROC
+Proc_StartDialog(0,(STRING)_RecruitementDialog,(GUIDSTRING)_UnhiredCompanion,(GUIDSTRING)_NonAvatar)
+AND
+DB_OriginRecruitmentDialog((CHARACTERGUID)_UnhiredCompanion,_RecruitementDialog)
+AND
+QRY_StartDialog(0,_RecruitementDialog,_UnhiredCompanion,_NonAvatar)
+THEN
+DB_NoOp(1);
+
+//Companion in party with initiates conversation with unhired companion.
+IF
+DialogStarted(_RecruitementDialog,_ID)
+AND
+DB_OriginRecruitmentDialog(_UnhiredCompanion,_RecruitementDialog)
+AND
+DB_DialogPlayers(_ID,_Player,1)
+AND
+NOT DB_Avatars((CHARACTERGUID)_Player)
+THEN
+PROC_CheckPlayTut(_Player,"TUT_Comp_Talking_To_Comp");
+//END_REGION
+
+//REGION Profession Tags
+IF
+DB_OriginProfessionTags(_Char,_Tag)
+THEN
+SetTag(_Char,_Tag);
+
+
+//END_REGION
+
+//REGION
+//Res blocked after death
+IF
+ObjectWasTagged((CHARACTERGUID)_Origin,"BLOCK_RESURRECTION")
+AND
+DB_FormerCompanionDeath_QuestUpdate(_Origin,_Update)
+AND
+CharacterIsDead(_Origin,1)
+THEN
+PROC_FormerCompanionDeath_QuestUpdate(_Origin,_Update);
+
+//Died when not in party
+IF
+CharacterDied((CHARACTERGUID)_Origin)
+AND
+DB_FormerCompanionDeath_QuestUpdate(_Origin,_Update)
+AND
+NOT DB_IsPlayer(_Origin)
+THEN
+PROC_FormerCompanionDeath_QuestUpdate(_Origin,_Update);
+
+//Died with block res
+IF
+CharacterDied((CHARACTERGUID)_Origin)
+AND
+DB_FormerCompanionDeath_QuestUpdate(_Origin,_Update)
+AND
+IsTagged(_Origin,"BLOCK_RESURRECTION",1)
+THEN
+PROC_FormerCompanionDeath_QuestUpdate(_Origin,_Update);
+
+//Apply update to Avatars
+PROC
+PROC_FormerCompanionDeath_QuestUpdate((CHARACTERGUID)_Origin,(STRING)_Update)
+AND
+GetRegion(_Origin,_Region)
+AND
+_Region != "TUT_Tutorial_A"
+AND
+DB_Avatars(_Avatar)
+THEN
+ObjectSetFlag(_Avatar,_Update);
+
+
+//END_REGION
+
+
+//REGION Companions not following because stuck in State_Manager_Go_To_Trigger()
+IF
+SavegameLoaded(_Major,_Minor,_Rev,_Build)
+AND
+QRY_VersionIsOlderThan(_Major,_Minor,_Rev,_Build,3,1,3,6)
+AND
+DB_IsPlayer(_Player)
+THEN
+CharacterSetReactionPriority(_Player,"State_Manager_Go_To_Trigger",0);
+
+// Tutorial and not going to rescue boat -> disable
+IF
+SavegameLoaded(_Major,_Minor,_Rev,_Build)
+AND
+QRY_VersionIsOlderThan(_Major,_Minor,_Rev,_Build,3,1,3,6)
+AND
+DB_CurrentLevel("TUT_Tutorial_A")
+AND
+DB_OriginRecruitmentDialog(_Origin,_)
+AND
+NOT DB_TUT_LowerDeck_OriginsGoingUp(_Origin)
+THEN
+CharacterSetReactionPriority(_Origin,"State_Manager_Go_To_Trigger",0);
+
+// Not tutorial -> disable (this reaction is currently only used in the tutorial for origins)
+IF
+SavegameLoaded(_Major,_Minor,_Rev,_Build)
+AND
+QRY_VersionIsOlderThan(_Major,_Minor,_Rev,_Build,3,1,3,6)
+AND
+NOT DB_CurrentLevel("TUT_Tutorial_A")
+AND
+DB_OriginRecruitmentDialog(_Origin,_)
+THEN
+CharacterSetReactionPriority(_Origin,"State_Manager_Go_To_Trigger",0);
+//END_REGION
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "DOS2ModWrapper"
