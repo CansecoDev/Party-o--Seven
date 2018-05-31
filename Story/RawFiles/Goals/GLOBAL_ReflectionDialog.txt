@@ -5,6 +5,9 @@ DB_ReflectionDialog_PlayerIdentifier(1,"PDD_Player1");
 DB_ReflectionDialog_PlayerIdentifier(2,"PDD_Player2");
 DB_ReflectionDialog_PlayerIdentifier(3,"PDD_Player3");
 DB_ReflectionDialog_PlayerIdentifier(4,"PDD_Player4");
+DB_ReflectionDialog_PlayerIdentifier(5,"PDD_Player5"); // Party o' Seven
+DB_ReflectionDialog_PlayerIdentifier(6,"PDD_Player6"); // Party o' Seven
+DB_ReflectionDialog_PlayerIdentifier(7,"PDD_Player7"); // Party o' Seven
 
 //DB_GlobalReflectionDialog(_ReflectionDialogName) Will make the PDD ignore in party checks
 KBSECTION
@@ -270,7 +273,7 @@ DB_ReflectionDialog_PlayerCount(_ReflectionDialogName,_Count)
 AND
 IntegerSum(_Count,1,_NewCount)
 AND
-_NewCount <= 4
+_NewCount <= 7 // Party o' Seven
 THEN
 DB_ReflectionDialog_Players(_ReflectionDialogName,_Player,_NewCount);
 NOT DB_ReflectionDialog_PlayerCount(_ReflectionDialogName,_Count);

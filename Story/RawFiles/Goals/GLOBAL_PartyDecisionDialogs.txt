@@ -10,6 +10,9 @@ DB_PartyDecisionDialog_UltimatumEvent("Ultimatum5","Optional5Chosen");
 DB_PartyDecisionDialog_PlayerIdentifier(2,"PDD_Player2");
 DB_PartyDecisionDialog_PlayerIdentifier(3,"PDD_Player3");
 DB_PartyDecisionDialog_PlayerIdentifier(4,"PDD_Player4");
+DB_PartyDecisionDialog_PlayerIdentifier(5,"PDD_Player5"); // Party o' Seven
+DB_PartyDecisionDialog_PlayerIdentifier(6,"PDD_Player6"); // Party o' Seven
+DB_PartyDecisionDialog_PlayerIdentifier(7,"PDD_Player7"); // Party o' Seven
 
 DB_LoopEffectDisabledInCombat("RS3_FX_UI_Exclamation_Mark_01");
 KBSECTION

@@ -1,7 +1,7 @@
 Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
-DB_Origins_MaxPartySize(4);
+DB_Origins_MaxPartySize(7); // Party o' Seven
 DB_Origins_InitialRegion("FJ_FortJoy_Main");
 
 DB_OriginRecruitmentDialog((CHARACTERGUID)CHARACTERGUID_S_Player_Sebille_c8d55eaf-e4eb-466a-8f0d-6a9447b5b24c,"Sebille_Recruitment");
@@ -666,7 +666,7 @@ DB_Origins_MaxPartySize(_Max)
 AND
 _Int == _Max
 THEN
-GlobalSetFlag("GEN_MaxPlayerCountReached");
+﻿GlobalClearFlag("GEN_MaxPlayerCountReached"); // Party o' Seven
 
 PROC
 Proc_CheckPartyFull()
