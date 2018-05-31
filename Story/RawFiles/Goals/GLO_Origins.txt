@@ -708,57 +708,6 @@ ObjectClearFlag(_Player,"UserOwnedPlayerCharacter",0);
 
 //END_REGION
 
-//REGION Tag Priority Dialogs
-PROC
-PROC_GLOBAL_DialogStartRequested((CHARACTERGUID)_NPC,(CHARACTERGUID)_Player)
-THEN
-PROC_GLO_Origins_CheckTagPriorityDialogs(_NPC,_Player);
-
-PROC
-PROC_GLO_Origins_CheckTagPriorityDialogs((CHARACTERGUID)_NPC,(CHARACTERGUID)_Player)
-AND
-DB_TagPriorityDialog(_NPC,_Dialog,_PriorityTag)
-AND
-NOT DB_GLO_OriginsFoundTagPriorityPlayer(1)
-AND
-IsTagged(_Player,_PriorityTag,0)
-AND
-DB_IsPlayer(_OtherPlayer)
-AND
-QRY_SpeakerIsAvailable(_OtherPlayer)
-AND
-_OtherPlayer != _Player
-AND
-CharacterGetReservedUserID(_Player,_ID)
-AND
-CharacterGetReservedUserID(_OtherPlayer,_ID)
-AND
-IsTagged(_OtherPlayer,_PriorityTag,1)
-AND
-GetDistanceTo(_Player,_OtherPlayer,_Dist)
-AND
-_Dist < 10.0
-THEN
-DB_GLO_OriginsFoundTagPriorityPlayer(1);
-ProcForceStopDialog(_NPC);
-Proc_StartDialog(0,_Dialog,_NPC,_OtherPlayer);
-PROC_GLO_Origins_ClearTaggedPrioritiesForDialog(_Dialog);
-
-PROC
-PROC_GLO_Origins_ClearTaggedPrioritiesForDialog((STRING)_Dialog)
-AND
-DB_TagPriorityDialog(_NPC,_Dialog,_PriorityTag)
-THEN
-NOT DB_TagPriorityDialog(_NPC,_Dialog,_PriorityTag);
-
-PROC
-PROC_GLO_Origins_CheckTagPriorityDialogs((CHARACTERGUID)_NPC,(CHARACTERGUID)_Player)
-THEN
-NOT DB_GLO_OriginsFoundTagPriorityPlayer(1);
-
-//END_REGION
-
-
 //REGION Origin Hostility
 IF
 ObjectFlagSet("SetOriginHostileAfterDialog",_UnRecruitedOrigin,_)
