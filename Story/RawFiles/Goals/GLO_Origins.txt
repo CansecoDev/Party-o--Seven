@@ -666,7 +666,7 @@ DB_Origins_MaxPartySize(_Max)
 AND
 _Int == _Max
 THEN
-﻿GlobalClearFlag("GEN_MaxPlayerCountReached"); // Party o' Seven
+GlobalClearFlag("GEN_MaxPlayerCountReached"); // Party o' Seven
 
 PROC
 Proc_CheckPartyFull()

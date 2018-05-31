@@ -6,9 +6,9 @@ INITSECTION
 //If _Distance is set to -1.0, then it checks how many party members exist at all.
 //Character flag below is set on character.
 
-﻿DB_GLO_PartyAmountFlags("GLO_PartyOf7", 7); // Party o' Seven
-﻿DB_GLO_PartyAmountFlags("GLO_PartyOf6", 6); // Party o' Seven
-﻿DB_GLO_PartyAmountFlags("GLO_PartyOf5", 5); // Party o' Seven
+DB_GLO_PartyAmountFlags("GLO_PartyOf7", 7); // Party o' Seven
+DB_GLO_PartyAmountFlags("GLO_PartyOf6", 6); // Party o' Seven
+DB_GLO_PartyAmountFlags("GLO_PartyOf5", 5); // Party o' Seven
 DB_GLO_PartyAmountFlags("GLO_PartyOf4", 4);
 DB_GLO_PartyAmountFlags("GLO_PartyOf3", 3);
 DB_GLO_PartyAmountFlags("GLO_PartyOf2", 2);
